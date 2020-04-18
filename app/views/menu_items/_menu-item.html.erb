@@ -1,0 +1,11 @@
+<% items.each do |item| %>
+    <h5><%= item.name %></h5>
+    <h6>Price:<%= item.price %></h6>
+    <p>Description:<%= item.description%></p>
+    <%= form_with(url: "/menu_items/#{item.id}", method:"put") do %>
+        <label for="quantity">Quantity:</label>
+        <%= number_field_tag 'quantity',nil,min: 1,class: 'quantity_field'%>
+        <%= button_tag 'Add to cart',type:'submit'%>
+    <% end %>
+<% end %>
+<hr>
