@@ -1,0 +1,18 @@
+<% subtotal = 0%>
+<table class="Table-cart">
+<tr>
+    <th>Name</th>
+    <th>Price per unit</th>
+    <th>Quantity</th>
+</tr>
+<% @order_items.each do |item| %>
+<tr>
+<td><%= item.menu_item_name %></td>
+<td><%= item.menu_item_price %></td>
+<td><%= item.quantity %></td>
+</tr>
+<% subtotal=subtotal+ ((item.menu_item_price.to_i)*(item.quantity.to_i)) %>
+<% end %>
+</table>
+<h2>Total(inclusive of delivery charges and taxes):<%= 25+(subtotal*1.05) %></h2>
+<%= link_to "Go back to orders", orders_path %>

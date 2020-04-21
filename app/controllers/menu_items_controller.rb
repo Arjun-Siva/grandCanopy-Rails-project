@@ -1,4 +1,6 @@
 class MenuItemsController < ApplicationController
+  skip_before_action :ensure_user_logged_in
+
   def index
     @current_cart = get_cart.dup
     render "index"
@@ -11,7 +13,7 @@ class MenuItemsController < ApplicationController
     id = params[:id]
     item = MenuItem.find(id)
     new_item = {
-      id: id,
+      id: item.id,
       name: item.name,
       price: item.price,
       quantity: params[:quantity],
