@@ -7,9 +7,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
- 
     <% if @current_user %>
       <p class="UserHeader">
         Welcome <%= @current_user.first_name %>!
@@ -24,4 +22,3 @@
     <%= yield %>
   </body>
 </html>
-

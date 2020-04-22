@@ -1,3 +1,26 @@
-// Place all the styles related to the Homes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.HomePageMain {
+    background-image: url(/assets/homepage.jpeg);
+    height: 882px;
+    max-width: 1908px;
+}
+
+.HomePage-navigate {
+    align-items: center;
+    display: inline-flex;
+    max-width: 700px;
+    margin-top: 571px;
+    margin-left: 700px;
+    margin-right: 752px;
+    margin-bottom: 241px;
+}
+
+.HomePage-naivgateButton {
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid darkgrey;
+    border-radius: 8px;
+    color: rgb(96, 96, 96);
+    height: 50px;
+    font-size: 46px;
+    margin: 20px;
+}
