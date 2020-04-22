@@ -1,6 +1,6 @@
 <% items.each do |item| %>
-    <h5><%= item.name %></h5>
-    <h6>Price:<%= item.price %></h6>
+    <h3><%= item.name %></h3>
+    <h4>Price:<%= item.price %></h4>
     <p>Description:<%= item.description%></p>
     <%= form_with(url: "/menu_items/#{item.id}", method:"put") do %>
         <label for="quantity">Quantity:</label>
