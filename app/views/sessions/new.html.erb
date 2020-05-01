@@ -1,4 +1,4 @@
-<main class="LoginPage">
+<main class="SignInPage">
   <p class="LoginPage-title">Sign in </p>
   <div class="LoginPage-credentials">
     <%= form_with url:sessions_path do |form| %>
@@ -6,7 +6,10 @@
       <%= form.text_field :mobile, class:"Form-input" %>
       <p class="FormInput-label">Password:</p>
       <%= form.password_field :password, class:"Form-input" %>
-      <%= form.submit "Sign-in!", class: "Form-submit"%>
+      <div class="LoginPage-container">
+        <%= link_to "Create account", new_user_path, class: "LoginPage-redirect" %>
+        <%= form.submit "Sign-in", class: "Form-submit"%>
+      </div>
     <% end %>
   </div>
 </main>

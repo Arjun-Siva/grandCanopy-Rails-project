@@ -1,8 +1,15 @@
-.LoginPage {
-    font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
-    max-width: 500px;
+.SignInPage {
+    max-width: 450px;
     margin: 0 auto;
     margin-top: 200px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+}
+
+.SignUpPage {
+    max-width: 450px;
+    margin: 0 auto;
+    margin-top: 100px;
     border: 1px solid #dadce0;
     border-radius: 8px;
 }
@@ -11,10 +18,27 @@
     font-size: 24px;
     font-weight: 400;
     text-align: center;
+    margin: 24px;
 }
 
 .LoginPage-credentials {
-    margin: 60px;
+    margin: 40px;
+    margin-bottom: 40px;
+}
+
+.LoginPage-redirect {
+    color: #1a73e8;
+    font-size: 14px;
+    text-decoration: inherit;
+    font-weight: 560;
+}
+
+.LoginPage-container {
+    display: flex;
+    width: 356px;
+    align-items: center;
+    margin: 10px;
+    justify-content: space-between;
 }
 
 .FormInput-label {
@@ -28,7 +52,7 @@
 .Form-input {
     border: 1px solid transparent;
     border-radius: 4px;
-    background-color: #f1edf7;
+    background-color: rgb(232, 240, 254);
     width: 350px;
     height: 30px;
     padding: 2px 2px;
@@ -40,11 +64,10 @@
 .Form-submit {
     border: 1px solid transparent;
     border-radius: 4px;
-    background-color: #48BB78;
-    width: 70px;
-    height: 30px;
+    color: #fff;
+    background-color: #1a73e8;
+    height: 35px;
     padding: 2px 2px;
-    font-size: 18px;
-    margin-top: 30px;
-    margin-left: 295px;
+    font-size: 16px;
+    width: 80px;
 }
