@@ -1,16 +1,12 @@
-<p class="NewUsers-title">Sign in! </p>
-<section class="UsersNew">
+<main class="SignInPage">
+  <p class="SignInPage-title">Sign in </p>
+  <div class="SignInPage-credentials">
     <%= form_with url:sessions_path do |form| %>
-    <div class = "form-section">
-        <p class="formInput-label">Mobile:</p>
-        <%= form.text_field :mobile, class:"form-input" %>
-    </div>
-    <div class = "form-section">
-        <p class="formInput-label">Password:</p>
-        <%= form.password_field :password, class:"form-input" %>
-    </div>
-    <div class="form-section">
-        <%= form.submit "Sign-in!", class: "form-submit"%>
-    </div>
-    <% end %> 
-</section>
+      <p class="FormInput-label">Mobile:</p>
+      <%= form.text_field :mobile, class:"Form-input" %>
+      <p class="FormInput-label">Password:</p>
+      <%= form.password_field :password, class:"Form-input" %>
+      <%= form.submit "Sign-in!", class: "Form-submit"%>
+    <% end %>
+  </div>
+</main>
