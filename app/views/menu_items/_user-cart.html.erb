@@ -1,4 +1,4 @@
-<% subtotal = 0%>
+<% subtotal = 0 %>
 <table class="Table-cart">
 <tr>
     <th>Name</th>
@@ -6,14 +6,25 @@
     <th>Quantity</th>
 </tr>
 <% current_cart.each do |item| %>
+<% if item["id"]!=nil %>
+<% cart_item = MenuItem.find(item["id"].to_i) %>
+
 <tr>
-<td><%= item[:name] %></td>
-<td><%= item[:price] %></td>
-<td><%= item[:quantity] %></td>
+<td><%= cart_item.name %></td>
+<td><%= cart_item.price %></td>
+<td><%= item["quantity"] %></td>
+<td>
+<%= form_with(url: "/menu_items/#{cart_item.id}",method: "delete") do %>
+         <%= button_tag 'Delete',type:'submit'%>
+<% end %>
+</td>
 </tr>
-<% subtotal=subtotal+ ((item[:price].to_i)*(item[:quantity].to_i)) %>
+<% subtotal=subtotal+ (((cart_item.price).to_i)*(item["quantity"].to_i)) %>
+<% end %>
 <% end %>
 </table>
 <h2>Subtotal:<%= subtotal %></h2>
+<% if current_cart.length > 0 %>
 <%= link_to "Proceed to checkout", order_items_path %>
+<% end %>
 <hr>
