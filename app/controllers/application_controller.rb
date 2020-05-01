@@ -1,18 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :ensure_user_logged_in
-  @@cart = []
-
-  def get_cart
-    return @@cart
-  end
-
-  def put_cart(new_item)
-    @@cart.push(new_item)
-  end
-
-  def destroy_cart
-    @@cart = Array.new
-  end
+  before_action :ensure_cart_initialized
 
   def ensure_user_logged_in
     unless current_user
@@ -27,6 +15,12 @@ class ApplicationController < ActionController::Base
       @current_user = User.find(current_user_id)
     else
       nil
+    end
+  end
+
+  def ensure_cart_initialized
+    if session[:cart] == nil
+      session[:cart] = Array.new
     end
   end
 end

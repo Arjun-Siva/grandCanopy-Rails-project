@@ -1,29 +1,30 @@
 class OrderItemsController < ApplicationController
   def index
-    @current_cart = get_cart.dup
+    @current_cart = session[:cart].dup
     render "index"
   end
 
   def create
-    @current_cart = get_cart.dup
+    @current_cart = session[:cart].dup
     new_order = Order.new(
       user_id: @current_user.id,
-      address: @current_user.address,
+      address: (params[:address] == "" ? @current_use.address : params[:address]),
       date: Time.now,
       status: "Order placed",
     )
     new_order.save
     @current_cart.each do |order_item|
+      item = MenuItem.find(order_item["id"].to_i)
       OrderItem.create!(
         order_id: new_order.id,
-        menu_item_id: order_item[:id],
-        menu_item_name: order_item[:name],
-        menu_item_price: order_item[:price],
-        quantity: order_item[:quantity],
+        menu_item_id: item.id,
+        menu_item_name: item.name,
+        menu_item_price: item.price,
+        quantity: order_item["quantity"].to_i,
       )
     end
     flash[:error] = "Your order has been placed successfully!"
-    destroy_cart
+    session[:cart] = nil
     redirect_to orders_path
   end
 end

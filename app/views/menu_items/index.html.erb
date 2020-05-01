@@ -4,7 +4,7 @@
     <section>
       <div class="MenuPage-cart">
         <h2>Your cart:</h2>
-        <%= render partial: "user-cart",locals:{current_cart: @current_cart.dup}%>
+        <%= render partial: "user-cart",locals:{current_cart: @current_cart.dup }%>
         <% currentMenu=MenuItem.where("menu_id = ?",3)%>
       </div>
     </section>
