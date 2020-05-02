@@ -19,6 +19,7 @@ class UsersController < ApplicationController
         email: params[:email],
         address: params[:address],
         password: params[:password],
+        type: "customer",
       )
       new_user.save
     end

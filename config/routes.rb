@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :orders
   resources :order_items
+  resources :owner
   get "/signin" => "sessions#new", as: :new_session
   post "/signin" => "sessions#create", as: :sessions
   delete "/signout" => "sessions#destroy", as: :destroy_session

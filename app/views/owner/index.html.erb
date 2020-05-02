@@ -1,0 +1,12 @@
+<h1>Master Menu settings</h1>
+<% @menus.each do |menu| %>
+    <h2>Menu id:<%=menu.id %>,Menu name:<%= menu.name %></h2>
+    <% items = @menu_items.select{|item| item.menu_id = menu.id } %>
+    <% items.each do |currentItem| %>
+        <p><strong>Id:<%= currentItem.id %>, Name:<%= currentItem.name %></strong></p>
+        <p>Price:<%= currentItem.price %></p>
+        <p>Category:<%= currentItem.category %></p>
+        <p>Description:<%= currentItem.description %></p>
+    <% end %>
+    <hr>
+<% end %>

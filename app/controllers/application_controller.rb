@@ -23,4 +23,10 @@ class ApplicationController < ActionController::Base
       session[:cart] = Array.new
     end
   end
+
+  def ensure_owner_logged_in
+    unless @current_user.type_of_user = "Owner"
+      redirect_to "/"
+    end
+  end
 end
