@@ -1,12 +1,35 @@
 <h1>Master Menu settings</h1>
+<h4>Create a new menu:</h4>
+<%= form_with(url: "/owner", method: "post",class: "AddMenu") do %>
+    <%= text_field_tag 'name',nil,placeholder:"Menu name",class:'menu_name' %>
+    <%= button_tag 'Create',type:'submit', class:'AddMenu-button'%>
+<% end %>
+<hr>
 <% @menus.each do |menu| %>
-    <h2>Menu id:<%=menu.id %>,Menu name:<%= menu.name %></h2>
-    <% items = @menu_items.select{|item| item.menu_id = menu.id } %>
+    <h2>Menu id: <%=menu.id %>, Menu name: <%= menu.name %></h2>
+     <%= form_with(url: "/owner/#{menu.id}", method: "delete") do %>
+        <%= button_tag 'Delete menu',type:'submit', class:'DeleteMenu-button'%>
+    <% end %>
+    <% items = @menu_items.select{|item| item.menu_id == menu.id } %>
     <% items.each do |currentItem| %>
         <p><strong>Id:<%= currentItem.id %>, Name:<%= currentItem.name %></strong></p>
         <p>Price:<%= currentItem.price %></p>
         <p>Category:<%= currentItem.category %></p>
         <p>Description:<%= currentItem.description %></p>
+        <%= form_with(url: "/owner/#{menu.id}/#{currentItem.id}", method: "delete") do %>
+            <%= button_tag 'Delete item',type:'submit', class:'DeleteMenuItem-button'%>
+        <% end %>
+    <% end %>
+    <%= form_with(url: "/owner/#{menu.id}", method: "put") do %>
+        <label for="name">Menu item name:</label>
+        <%= text_field_tag 'name',nil,placeholder:"Name",class:'itemName_field' %>
+        <label for="category">Category:</label>
+        <%= text_field_tag 'category',nil,placeholder:"Category",class:'category_field' %>
+        <label for="description">Description of item:</label>
+        <%= text_field_tag 'description',nil,placeholder:"Description",class:'description_field' %>
+        <label for="price">Price:</label>
+        <%= number_field_tag 'price',nil,min: 1,class: 'price_field'%>
+        <%= button_tag 'Add to this menu',type:'submit'%>
     <% end %>
     <hr>
 <% end %>

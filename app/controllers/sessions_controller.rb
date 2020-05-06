@@ -9,7 +9,11 @@ class SessionsController < ApplicationController
     user = User.find_by(mobile: params[:mobile])
     if user != nil && user.authenticate(params[:password])
       session[:current_user_id] = user.id
-      redirect_to menu_items_path
+      if (user.type_of_user == "Owner")
+        redirect_to owner_path
+      else
+        redirect_to menu_items_path
+      end
     else
       flash[:error] = "Incorrect credentials! Please retry"
       redirect_to new_session_path

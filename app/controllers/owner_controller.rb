@@ -9,18 +9,14 @@ class OwnerController < ApplicationController
   def create
     ensure_owner_logged_in
     name = params[:name]
-    if Menu.where("name = ?", name)
-      flash[:error] = "Menu name already exists"
-      redirect_to owner_path
-    else
-      Menu.create!(name: name)
-    end
+    Menu.create!(name: name)
     redirect_to owner_path
   end
 
-  def show
-    id = params[:id]
-    Menu.find(id.to_i).destroy
+  def deleteMenu
+    id = params[:menu]
+    menu = Menu.find(id)
+    menu.destroy
     redirect_to owner_path
   end
 
@@ -31,12 +27,12 @@ class OwnerController < ApplicationController
     price = params[:price]
     menu_id = params[:id]
     MenuItem.create!(name: name, category: category, description: desc, price: price, menu_id: menu_id)
-    redirect_tp owner_path
+    redirect_to owner_path
   end
 
-  def destroy
-    menuItemId = params[:id]
-    MenuItem.find(menuItemId.to_i).destroy
+  def deleteItem
+    menuItemId = params[:item]
+    MenuItem.where("menu_id= ?", params[:menu]).find(menuItemId.to_i).destroy
     redirect_to owner_path
   end
 end
