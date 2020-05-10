@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  skip_before_action :ensure_cart_initialized
+
   def index
     @myOrders = Order.where("user_id = ? ", @current_user.id).all.order(:created_at).reverse_order
     render "index"

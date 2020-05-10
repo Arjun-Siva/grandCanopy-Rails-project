@@ -19,10 +19,17 @@ class UsersController < ApplicationController
         email: params[:email],
         address: params[:address],
         password: params[:password],
-        type: "customer",
+        type_of_user: "customer",
       )
       new_user.save
+      user = User.find_by(mobile: params[:mobile])
+      if user != nil && user.authenticate(params[:password])
+        session[:current_user_id] = user.id
+        redirect_to menu_items_path
+      else
+        flash[:error] = "We are facing some difficulties in authorizing you. Please sign in"
+        redirect_to new_users_path
+      end
     end
-    redirect_to "/menu_items"
   end
 end
