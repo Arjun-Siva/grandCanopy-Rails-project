@@ -6,8 +6,6 @@
 <p>Delivered to:<%= order.address %> </p>
 <h3>Order Status:<%= order.status %> </h3>
 </div>
-<%= form_with(url: "/orders/#{order.id}", method:"get") do %>
-    <%= button_tag 'View order',type:'submit'%>
-<% end %>
+<%= link_to "View order", "/orders/#{order.id}" %>
 <hr>
 <% end %>

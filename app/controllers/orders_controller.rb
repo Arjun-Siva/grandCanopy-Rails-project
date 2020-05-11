@@ -6,9 +6,13 @@ class OrdersController < ApplicationController
     render "index"
   end
 
-  def show
+  def show_order
     orderId = params[:id]
-    @order_items = OrderItem.where("order_id = ? ", orderId)
-    render "show"
+    if (Order.find(orderId)).user_id == (@current_user.id).to_i
+      @order_items = OrderItem.where("order_id = ?", orderId)
+      render "show"
+    else
+      redirect_to orders_path
+    end
   end
 end

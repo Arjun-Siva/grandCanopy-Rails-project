@@ -11,6 +11,8 @@ class SessionsController < ApplicationController
       session[:current_user_id] = user.id
       if (user.type_of_user == "Owner")
         redirect_to owner_path
+      elsif (user.type_of_user == "Clerk")
+        redirect_to clerks_path
       else
         redirect_to menu_items_path
       end

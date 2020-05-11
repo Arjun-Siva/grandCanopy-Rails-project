@@ -29,4 +29,10 @@ class ApplicationController < ActionController::Base
       redirect_to "/"
     end
   end
+
+  def ensure_clerk_logged_in
+    unless @current_user.type_of_user = "Clerk"
+      redirect_to "/"
+    end
+  end
 end
