@@ -15,7 +15,7 @@
 <td><%= item["quantity"] %></td>
 <td>
 <%= form_with(url: "/menu_items/#{cart_item.id}",method: "delete") do %>
-         <%= button_tag 'Delete',type:'submit'%>
+    <%= button_tag 'Delete',type:'submit'%>
 <% end %>
 </td>
 </tr>

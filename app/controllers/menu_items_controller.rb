@@ -3,6 +3,8 @@ class MenuItemsController < ApplicationController
 
   def index
     @current_cart = session[:cart].dup
+    default_menu = Menu.where(default: true)
+    @currentMenu = MenuItem.where("menu_id = ?", default_menu[0].id)
     render "index"
   end
 

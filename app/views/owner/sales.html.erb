@@ -1,0 +1,2 @@
+<% offlineOrders = @allOrders.where("status = ?","Offline bill") %>
+<% onlineOrders = @allOrders.where("status = ?" ,"Delivered") %>

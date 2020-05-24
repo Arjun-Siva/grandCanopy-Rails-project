@@ -5,17 +5,16 @@
       <div class="MenuPage-cart">
         <h2>Your cart:</h2>
         <%= render partial: "user-cart",locals:{current_cart: @current_cart.dup }%>
-        <% currentMenu=MenuItem.where("menu_id = ?",3)%>
       </div>
     </section>
     <h2>Indian</h2>
     <%= render partial: "menu-item", locals:{
-    items: currentMenu.select{|item| item.category=='Indian'}} %>
+    items: @currentMenu.select{|item| item.category=='Indian'}} %>
     <h2>Chinese</h2>
     <%= render partial: "menu-item", locals:{
-    items: currentMenu.select{|item| item.category=='Chinese'}} %>
+    items: @currentMenu.select{|item| item.category=='Chinese'}} %>
     <h2>Milkshakes</h2>
     <%= render partial: "menu-item", locals:{
-    items: currentMenu.select{|item| item.category=='Milkshake'}} %>
+    items: @currentMenu.select{|item| item.category=='Milkshake'}} %>
   </article>
 </main>
