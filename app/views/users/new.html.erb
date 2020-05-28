@@ -1,5 +1,10 @@
-<main class="SignUpPage">
-  <p class="LoginPage-title">Sign up </p>
+<main class="LoginPage" style="margin-top: 150px;">
+  <p class="LoginPage-title">Sign up!</p>
+  <% if flash[:alert] %>
+    <p style="text-align:" class="FlashMessage">
+      <%= flash[:alert] %>
+    </p>
+  <% end %>
   <div class="LoginPage-credentials">
     <%= form_with url:users_path do |form| %>
       <p class="FormInput-label">First Name:</p>
@@ -14,6 +19,8 @@
       <%= form.text_field :address, class:"Form-input" %>
       <p class="FormInput-label">Password:</p>
       <%= form.password_field :password, class:"Form-input" %>
+      <p class="FormInput-label">Confirm Password:</p>
+      <%= form.password_field :password_confirmation, class:"Form-input" %>
       <div class="LoginPage-container">
         <%= link_to "Sign in instead", new_session_path, class: "LoginPage-redirect" %>
         <%= form.submit "Sign-up", class: "Form-submit"%>

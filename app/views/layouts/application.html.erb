@@ -8,17 +8,20 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <% if @current_user %>
-      <p class="UserHeader">
-        Welcome <%= @current_user.first_name %>!
-        <%= link_to "Sign-out",destroy_session_path,method:"delete" %>
-      </p>
-    <% end %>
-    <% if flash[:error] %>
-      <p class="Flash-error">
-        <%= flash[:error] %>
-      </p>
-    <% end %>
+    <div class="Navbar">
+      <%= link_to  "/" do %>
+        <% image_tag "home.svg", class: "Navbar-icon"%>
+      <% end %>
+      <% if @current_user %>
+        <div class="AppHeader">
+          <p class="AppHeader-title"> Hello <%= @current_user.first_name %>! </p>
+          <%= link_to "Sign-out", destroy_session_path, method: :delete, class: "AppHeader-signout" %>
+        </div>
+      <% end %>
+      <%= link_to order_items_path do %>
+        <% image_tag "cart.svg", class: "Navbar-icon"%>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

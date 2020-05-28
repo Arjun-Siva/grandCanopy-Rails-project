@@ -17,3 +17,48 @@
 body {
     font-family: 'Google Sans', arial, sans-serif;
 }
+
+.Navbar {
+    display: flex;
+    height: 50px;
+    background-color: #1a73e8;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    justify-content: space-between;
+}
+
+.Navbar-icon {
+    height: 40px;
+    margin: 5px;
+}
+
+.AppHeader {
+    margin-left: 1500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.AppHeader-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.AppHeader-signout {
+    color: #ffffff;
+    padding: 2px 2px;
+    font-size: 16px;
+}
+
+.BreakLine {
+    width: 440px;
+    border: 0.5px solid #dadce0;
+    margin-bottom: 20px;
+}
+
+.FlashMessage {
+    text-align: center;
+    color: #d93025;
+    font-size: 12px;
+    margin-bottom: 10px;
+}

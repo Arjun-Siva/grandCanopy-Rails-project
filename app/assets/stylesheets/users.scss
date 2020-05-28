@@ -1,15 +1,7 @@
-.SignInPage {
+.LoginPage {
     max-width: 450px;
     margin: 0 auto;
-    margin-top: 200px;
-    border: 1px solid #dadce0;
-    border-radius: 8px;
-}
-
-.SignUpPage {
-    max-width: 450px;
-    margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 150px;
     border: 1px solid #dadce0;
     border-radius: 8px;
 }
@@ -22,6 +14,7 @@
 }
 
 .LoginPage-credentials {
+    max-width: 370px;
     margin: 40px;
     margin-bottom: 40px;
 }
@@ -30,14 +23,14 @@
     color: #1a73e8;
     font-size: 14px;
     text-decoration: inherit;
-    font-weight: 560;
+    font-weight: 600;
 }
 
 .LoginPage-container {
     display: flex;
     width: 356px;
     align-items: center;
-    margin: 10px;
+    margin: 7px;
     justify-content: space-between;
 }
 
@@ -50,14 +43,14 @@
 }
 
 .Form-input {
-    border: 1px solid transparent;
+    border: 1px solid #dadce0;
     border-radius: 4px;
     background-color: rgb(232, 240, 254);
     width: 350px;
     height: 30px;
     padding: 2px 2px;
     font-size: 18px;
-    margin: 10px;
+    margin: 7px;
     margin-bottom: 15px;
 }
 

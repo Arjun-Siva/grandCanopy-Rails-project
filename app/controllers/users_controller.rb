@@ -19,16 +19,20 @@ class UsersController < ApplicationController
         email: params[:email],
         address: params[:address],
         password: params[:password],
+        password_confirmation: params[:password_confirmation],
         type_of_user: "customer",
       )
       new_user.save
       user = User.find_by(mobile: params[:mobile])
-      if user != nil && user.authenticate(params[:password])
-        session[:current_user_id] = user.id
-        redirect_to menu_items_path
+      if user != nil
+        if user.authenticate(params[:password])
+          session[:current_user_id] = user.id
+          redirect_to menu_items_path
+        else
+          redirect_to new_session_path, alert: "User already exits! Please sign in"
+        end
       else
-        flash[:error] = "We are facing some difficulties in authorizing you. Please sign in"
-        redirect_to new_users_path
+        redirect_to new_user_path, alert: new_user.errors.full_messages.join(", ")
       end
     end
   end

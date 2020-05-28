@@ -1,9 +1,14 @@
-<main class="SignInPage">
-  <p class="LoginPage-title">Sign in </p>
+<main class="LoginPage">
+  <p class="LoginPage-title">Sign in!</p>
+  <% if flash[:alert] %>
+    <p class="FlashMessage">
+      <%= flash[:alert] %>
+    </p>
+  <% end %>
   <div class="LoginPage-credentials">
     <%= form_with url:sessions_path do |form| %>
       <p class="FormInput-label">Mobile:</p>
-      <%= form.text_field :mobile, class:"Form-input" %>
+      <%= form.text_field :mobile, class:"Form-input", autofocus: "autofocus" %>
       <p class="FormInput-label">Password:</p>
       <%= form.password_field :password, class:"Form-input" %>
       <div class="LoginPage-container">

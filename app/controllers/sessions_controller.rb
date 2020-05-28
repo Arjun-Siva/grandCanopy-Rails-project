@@ -3,6 +3,11 @@ class SessionsController < ApplicationController
   skip_before_action :ensure_cart_initialized
 
   def new
+    if current_user == nil
+      render "new"
+    else
+      redirect_to menu_items_path
+    end
   end
 
   def create
@@ -17,8 +22,7 @@ class SessionsController < ApplicationController
         redirect_to menu_items_path
       end
     else
-      flash[:error] = "Incorrect credentials! Please retry"
-      redirect_to new_session_path
+      redirect_to new_session_path, alert: "Invalid credentials. Please try again!"
     end
   end
 
