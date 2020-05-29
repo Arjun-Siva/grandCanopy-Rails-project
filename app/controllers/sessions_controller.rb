@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if current_user == nil
       render "new"
     else
-      redirect_to menu_items_path
+      redirect_to menu_items_path, alert: "You are already logged in"
     end
   end
 

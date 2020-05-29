@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_owner_logged_in
+    if session[:from_date] == nil and session[:to_date] == nil
+      session[:from_date] = Date.today
+      session[:to_date] = Date.today
+    end
     unless @current_user.type_of_user = "Owner"
       redirect_to "/"
     end

@@ -1,2 +1,52 @@
-<% offlineOrders = @allOrders.where("status = ?","Offline bill") %>
-<% onlineOrders = @allOrders.where("status = ?" ,"Delivered") %>
+<h2>Generate sales summary:</h2>
+<%= form_with(url: "/owner/sales", method:"post",class: "salesDates") do %>
+    <label for="from_date">From:</label>
+    <%= date_field_tag 'from_date',nil,:required => true,class:'Sales-Date'%>
+    <label for="to_date">To:</label>
+    <%= date_field_tag 'to_date',nil,:required => true,class:'Sales-Date'%>
+    <%= button_tag 'Submit',type:'submit', class:'dateSubmit-buton'%>
+<% end %>
+<hr>
+<h4>Total no. of online orders: <%= @onlineOrders %></h4>
+<h4>Total no. of offline orders: <%= @offlineOrders %></h4>
+<h3>Online orders summary</h3>
+<% onlineTotal=0 %>
+<table>
+    <tr>
+        <th>Menu Item Id</th>
+        <th>Menu Item name</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+    <tr>
+    <% @onlineData.keys.each do |key| %>
+        <tr>
+            <td><%= key %></td>
+            <td><%= @onlineData[key]['name'] %></td>
+            <td><%= @onlineData[key]['quantity'] %></td>
+            <td><%= @onlineData[key]['subtotal'] %></td>
+        </tr>
+        <% onlineTotal += @onlineData[key]['subtotal']%>
+    <% end %>
+</table>
+<h2>Total amount through online sales(inclusive of taxes and delivery charges):<%= onlineTotal*1.05+(@onlineOrders*25) %></h2>
+
+<h3>Offline orders summary</h3>
+<% offlineTotal=0 %>
+<table>
+    <tr>
+        <th>Menu Item Id</th>
+        <th>Menu Item name</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+    <tr>
+    <% @offlineData.keys.each do |key| %>
+        <tr>
+            <td><%= key %></td>
+            <td><%= @offlineData[key]['name'] %></td>
+            <td><%= @offlineData[key]['quantity'] %></td>
+            <td><%= @offlineData[key]['subtotal'] %></td>
+        </tr>
+        <% offlineTotal += @offlineData[key]['subtotal']%>
+    <% end %>
+</table>
+<h2>Total amount through offline sales(inclusive of taxes):<%= onlineTotal*1.05 %></h2>

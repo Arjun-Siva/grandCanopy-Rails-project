@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/owner/defaultMenu" => "owner#defMenu", as: :defMenu
   put "/owner/defaultMenu/:id" => "owner#changeDefMenu"
   get "/owner/sales" => "owner#salesReport", as: :sales
+  post "/owner/sales" => "owner#updateSalesReport"
   put "/owner/:id" => "owner#update"
   delete "/owner/:menu" => "owner#deleteMenu"
   delete "/owner/:menu/:item" => "owner#deleteItem"
