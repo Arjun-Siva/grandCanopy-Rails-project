@@ -1,15 +1,18 @@
 .HomePageMain {
     background-image: url(/assets/hotel.jpeg);
-    display: flex;
+}
+
+.HomePage-Title {
+    font-size: 80px;
+    color: #ffffff;
+    margin: 0 auto;
+    padding-left: 50px;
+    padding-top: 50px;
 }
 
 .HomePage-navigate {
     align-items: center;
-    display: inline-flex;
-    margin-top: 571px;
-    margin-left: 700px;
-    margin-right: 402px;
-    margin-bottom: 241px;
+    display: flex;
 }
 
 .HomePage-naivgateButton {
@@ -26,9 +29,6 @@
 .HomePage-login {
     align-items: center;
     display: inline-flex;
-    margin-top: 20px;
-    margin-right: 20px;
-    margin-bottom: 820px;
 }
 
 .HomePage-loginButton {

@@ -18,6 +18,14 @@
           <%= link_to "Sign-out", destroy_session_path, method: :delete, class: "AppHeader-signout" %>
         </div>
       <% end %>
+      <div class="HomePage-login">
+        <form method="get" action="/signin">
+          <input class="HomePage-loginButton" value="sign in" type="submit" />
+        </form>
+        <form method="get" action="/users/new">
+          <input class="HomePage-loginButton" value="sign up" type="submit" />
+        </form>
+      </div>
       <%= link_to order_items_path do %>
         <% image_tag "cart.svg", class: "Navbar-icon"%>
       <% end %>
