@@ -14,6 +14,7 @@
     <% end %>
     <% items = @menu_items.select{|item| item.menu_id == menu.id } %>
     <% items.each do |currentItem| %>
+        <img src=<%= currentItem.image %> >
         <p><strong>Id:<%= currentItem.id %>, Name:<%= currentItem.name %></strong></p>
         <p>Price:<%= currentItem.price %></p>
         <p>Category:<%= currentItem.category %></p>
@@ -24,13 +25,15 @@
     <% end %>
     <%= form_with(url: "/owner/#{menu.id}", method: "put") do %>
         <label for="name">Menu item name:</label>
-        <%= text_field_tag 'name',nil,placeholder:"Name",class:'itemName_field' %>
+        <%= text_field_tag 'name',nil,placeholder:"Name",:required => true,class:'itemName_field' %>
         <label for="category">Category:</label>
-        <%= text_field_tag 'category',nil,placeholder:"Category",class:'category_field' %>
+        <%= text_field_tag 'category',nil,placeholder:"Category",:required => true,class:'category_field' %>
         <label for="description">Description of item:</label>
-        <%= text_field_tag 'description',nil,placeholder:"Description",class:'description_field' %>
+        <%= text_field_tag 'description',nil,placeholder:"Description",:required => true,class:'description_field' %>
         <label for="price">Price:</label>
-        <%= number_field_tag 'price',nil,min: 1,class: 'price_field'%>
+        <%= number_field_tag 'price',nil,min: 1,:required => true,class: 'price_field'%>
+        <label for="image">Image URL:</label>
+        <%= text_field_tag 'image',nil,placeholder:"Image URL",:required => true,class:'image_field' %>
         <%= button_tag 'Add to this menu',type:'submit'%>
     <% end %>
     <hr>

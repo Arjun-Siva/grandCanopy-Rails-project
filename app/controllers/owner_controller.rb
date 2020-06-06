@@ -26,7 +26,8 @@ class OwnerController < ApplicationController
     desc = params[:description]
     price = params[:price]
     menu_id = params[:id]
-    new_item = MenuItem.new(name: name, category: category, description: desc, price: price, menu_id: menu_id)
+    image = params[:image]
+    new_item = MenuItem.new(name: name, category: category, description: desc, price: price, menu_id: menu_id, image: image)
     if new_item.save
       redirect_to owner_path
     else
