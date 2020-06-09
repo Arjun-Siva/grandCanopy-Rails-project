@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     if user != nil && user.authenticate(params[:password])
       session[:current_user_id] = user.id
       if (user.type_of_user == "Owner")
-        redirect_to owner_path
+        redirect_to menus_path
       elsif (user.type_of_user == "Clerk")
         redirect_to clerks_path
       else

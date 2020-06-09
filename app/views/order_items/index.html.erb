@@ -25,9 +25,10 @@
         <p>Delivery-charge:25</p>
         <h2>Total(inclusive of 5% taxes):<%= (subtotal*1.05)+25 %></h2>
         <%= form_with(url: "/order_items",method:"POST",class: "ConfirmOrder") do %>
-            <%= text_field_tag 'address',nil,placeholder:'Address',class:'Order-address'%>
+            <%= text_field_tag 'address',nil,placeholder:'Address',value:@current_user.address,class:'Order-address'%>
             <%= button_tag 'Confirm order',type:'submit',class:'ConfirmOrder-button'%>
         <% end %>
+        <p>(Change the address for delivery if you don't want to receive in your default saved address)</p>
     <% end %>
 <% else %>
     <h2>Oops! Your cart is empty </h2>

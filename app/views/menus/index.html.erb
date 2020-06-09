@@ -1,0 +1,23 @@
+<h4>Create a new menu:</h4>
+<%= form_with(url: "/menus", method: "post",class: "AddMenu") do %>
+    <%= text_field_tag 'name',nil,placeholder:"Menu name",class:'menu_name' %>
+    <%= button_tag 'Create',type:'submit', class:'AddMenu-button'%>
+<% end %>
+
+<h1>All saved menus </h1>
+<ul>
+<% @menus.each do |menu| %>
+    <li> <%= menu.id %>. <%= menu.name %> -
+    <% if menu.default %>
+        <strong>Default</strong>
+    <% else %>
+        <%= form_with(url: "/menus/#{menu.id}", method: "put") do %>
+            <%= button_tag "Set as default",type:'submit', class:'setDefMenu-button'%>
+        <% end %>
+    <% end %>
+    <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
+        <%= button_tag 'Delete menu',type:'submit', class:'DeleteMenu-button'%>
+    <% end %>
+    </li>
+<% end %>
+</ul>

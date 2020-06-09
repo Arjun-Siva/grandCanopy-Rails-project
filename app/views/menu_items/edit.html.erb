@@ -1,0 +1,16 @@
+<h1>Edit menu item:</h1>
+<%= form_with(url: "/menu_items/#{@item.id}", method: "put") do %>
+        <label for="name">Menu item name:</label>
+        <%= text_field_tag 'name',nil,placeholder:"Name",:required => true,value:@item.name,class:'itemName_field' %>
+        <label for="category">Category:</label>
+        <%= text_field_tag 'category',nil,placeholder:"Category",:required => true,value:@item.category,class:'category_field' %>
+        <label for="description">Description of item:</label>
+        <%= text_field_tag 'description',nil,placeholder:"Description",:required => true,value:@item.description,class:'description_field' %>
+        <label for="price">Price:</label>
+        <%= number_field_tag 'price',nil,min: 1,:required => true,value:@item.price,class: 'price_field'%>
+        <label for="image">Image URL:</label>
+        <%= text_field_tag 'image',nil,placeholder:"Image URL",:required => true,value:@item.image,class:'image_field' %>
+        <label for="menu">Menu ID:</label>
+        <%= number_field_tag 'menu',nil,:required => true,value:@item.menu_id,class: 'menu_id_field'%>
+        <%= button_tag 'Update',type:'submit'%>
+<% end %>

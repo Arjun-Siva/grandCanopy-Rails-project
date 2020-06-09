@@ -39,4 +39,12 @@ class ApplicationController < ActionController::Base
       redirect_to "/"
     end
   end
+
+  def check_owner
+    current_user.type_of_user == "Owner"
+  end
+
+  def check_clerk
+    current_user.type_of_user == "Clerk"
+  end
 end
