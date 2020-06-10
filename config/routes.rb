@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :users
   resources :orders
   resources :order_items
-  resources :clerks
   resources :menus
 
   get "/signin" => "sessions#new", as: :new_session

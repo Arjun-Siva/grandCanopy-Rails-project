@@ -40,6 +40,11 @@ class OrdersController < ApplicationController
       @onlineOrders = onlineOrderIds.length
       @offlineOrders = offlineOrderIds.length
       render "ownerIndex"
+    elsif check_clerk
+      ensure_clerk_logged_in
+      @orders_info = Order.all.order(:created_at).reverse_order
+      @order_items_info = OrderItem.all
+      render "clerkIndex"
     else
       @myOrders = Order.where("user_id = ? ", @current_user.id).all.order(:created_at).reverse_order
       render "index"
@@ -49,6 +54,29 @@ class OrdersController < ApplicationController
   def create
     session[:from_date] = Date.parse params[:from_date]
     session[:to_date] = Date.parse params[:to_date]
+    redirect_to orders_path
+  end
+
+  def update
+    ensure_clerk_logged_in
+    id = params[:id]
+    order = Order.find((id.to_i))
+    status = order.status
+    if status == "Order placed"
+      order.status = "Out for delivery"
+    elsif status == "Out for delivery"
+      order.status = "Delivered"
+    end
+    order.save
+    redirect_to orders_path
+  end
+
+  def destroy
+    ensure_clerk_logged_in
+    id = params[:id]
+    order = Order.find((id.to_i))
+    order.status = "Order rejected"
+    order.save
     redirect_to orders_path
   end
 

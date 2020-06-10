@@ -6,6 +6,6 @@
 <p>Delivered to:<%= order.address %> </p>
 <h3>Order Status:<%= order.status %> </h3>
 </div>
-<%= button_to "View order summary", show_order_path(order.id),class:'EditMenuItem-button', method:"get" %>
+<%= button_to "View order summary", "/orders/#{order.id}",class:'EditMenuItem-button', method:"get" %>
 <hr>
 <% end %>

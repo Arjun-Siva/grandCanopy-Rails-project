@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
       session[:from_date] = Date.today
       session[:to_date] = Date.today
     end
-    unless @current_user.type_of_user = "Owner"
+    unless current_user.type_of_user = "Owner"
       redirect_to "/"
     end
   end
@@ -46,5 +46,14 @@ class ApplicationController < ActionController::Base
 
   def check_clerk
     current_user.type_of_user == "Clerk"
+  end
+
+  def check_customer
+    user = current_user
+    if user == nil or user.type_of_user == "Customer"
+      return true
+    else
+      return false
+    end
   end
 end

@@ -1,8 +1,11 @@
 class MenusController < ApplicationController
   def index
-    ensure_owner_logged_in
-    @menus = Menu.all
-    render "index"
+    if check_owner
+      @menus = Menu.all
+      render "index"
+    else
+      redirect_to menu_items_path
+    end
   end
 
   def create
@@ -12,15 +15,17 @@ class MenusController < ApplicationController
   end
 
   def update
-    menu_id = (params[:id]).to_i
-    menus = Menu.all
-    menus.each do |menu|
-      if menu.id == menu_id
-        menu.default = true
-        menu.save!
-      else
-        menu.default = false
-        menu.save!
+    if check_owner
+      menu_id = (params[:id]).to_i
+      menus = Menu.all
+      menus.each do |menu|
+        if menu.id == menu_id
+          menu.default = true
+          menu.save!
+        else
+          menu.default = false
+          menu.save!
+        end
       end
     end
     redirect_to menus_path

@@ -14,12 +14,12 @@ class SessionsController < ApplicationController
     user = User.find_by(mobile: params[:mobile])
     if user != nil && user.authenticate(params[:password])
       session[:current_user_id] = user.id
-      if (user.type_of_user == "Owner")
-        redirect_to menus_path
-      elsif (user.type_of_user == "Clerk")
-        redirect_to clerks_path
-      else
+      if (user.type_of_user == "Customer")
         redirect_to menu_items_path
+      elsif (user.type_of_user == "Clerk")
+        redirect_to orders_path
+      else
+        redirect_to menus_path
       end
     else
       redirect_to new_session_path, alert: "Invalid credentials. Please try again!"

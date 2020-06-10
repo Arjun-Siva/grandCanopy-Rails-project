@@ -20,7 +20,7 @@ class UsersController < ApplicationController
         address: params[:address],
         password: params[:password],
         password_confirmation: params[:password_confirmation],
-        type_of_user: "customer",
+        type_of_user: "Customer",
       )
       new_user.save
       user = User.find_by(mobile: params[:mobile])
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
           session[:current_user_id] = user.id
           redirect_to menu_items_path
         else
-          redirect_to new_session_path, alert: "User already exits! Please sign in"
+          redirect_to new_sessions_path, alert: "User already exists! Please sign in"
         end
       else
         redirect_to new_user_path, alert: new_user.errors.full_messages.join(", ")
