@@ -1,24 +1,49 @@
 .MenuPageMain {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    max-width: 500px;
+    width: 100%;
     margin: 0 auto;
-    margin-top: 60px;
+    color: white;
 }
 
 .MenuPage-title {
     text-align: center;
-    background-color: #fc8019;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    color: white;
-    height: 48px;
-    font-size: 45px;
+    color: #ffffff;
+    font-size: 70px;
+}
+
+.MenuPage {
+    display: flex;
+    justify-content: space-between;
+}
+
+.MenuPage-items {
+    display: flex;
+}
+
+.MenuPage-cart {
+    margin: 25px;
+    padding-left: 25px;
+    border-left: 2px solid whitesmoke;
+}
+
+.MenuPage-cartTitle {
+    font-size: 42px;
+    text-align: center;
+    margin: 10px;
 }
 
 .CartItem-delete {
     height: 28px;
 }
 
-.menuItem{
-    border: 50px,black;
+.MenuItem {
+    margin: 25px;
+    width: 250px;
+    border: 2px solid #351010;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgb(255, 255, 255);
+}
+
+.MenuItem-image {
+    width: 250px;
+    height: 250px;
 }

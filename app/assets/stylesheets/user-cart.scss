@@ -1,7 +1,49 @@
-.Table-cart{
-    border: 2px solid black;
+.CartTable {
+    margin: 25px 0;
+    font-size: 1.5em;
+    min-width: 400px;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(90, 60, 60, 0.75);
 }
 
-td,th{
-    border: 1px solid black;
+.CartTable thead tr {
+    background-color: #351010;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+    opacity: 0.9;
+}
+
+.CartTable th,
+.CartTable td {
+    padding: 10px 10px;
+}
+
+.CartTable tbody tr {
+    font-weight: 600;
+    border-bottom: 1px solid #351010;
+}
+
+.CartTable tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    color: #000000;
+}
+
+.CartTable tbody tr:last-of-type {
+    border-bottom: 3px solid #351010;
+}
+
+.CartTable-delete {
+    border-left: transparent;
+}
+
+.CartTotal {
+    font-size: 26px;
+    margin: 20px;
+}
+
+.CartRedirect {
+    text-decoration: none;
+    color: #ffffff;
 }

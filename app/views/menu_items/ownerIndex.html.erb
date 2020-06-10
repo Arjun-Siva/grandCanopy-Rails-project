@@ -1,34 +1,36 @@
-<%= link_to "Select default Menu", "/menus" %>
-<%= link_to "Sales reports", "/orders" %>
-<h1>Master Menu settings</h1>
-<%= form_with(url: "/menu_items", method: "post") do %>
-        <label for="name">Menu item name:</label>
-        <%= text_field_tag 'name',nil,placeholder:"Name",:required => true,class:'itemName_field' %>
-        <label for="category">Category:</label>
-        <%= text_field_tag 'category',nil,placeholder:"Category",:required => true,class:'category_field' %>
-        <label for="description">Description of item:</label>
-        <%= text_field_tag 'description',nil,placeholder:"Description",:required => true,class:'description_field' %>
-        <label for="price">Price:</label>
-        <%= number_field_tag 'price',nil,min: 1,:required => true,class: 'price_field'%>
-        <label for="image">Image URL:</label>
-        <%= text_field_tag 'image',nil,placeholder:"Image URL",:required => true,class:'image_field' %>
-        <label for="menu_id">Menu ID:</label>
-        <%= number_field_tag 'menu_id',nil,:required => true,class: 'menu_id_field'%>
-        <%= button_tag 'Create',type:'submit'%>
-<% end %>
-<% @menus.each do |menu| %>
+<main class="OwnerMainPage">
+  <%= link_to "Select default Menu", "/menus" %>
+  <%= link_to "Sales reports", "/orders" %>
+  <h1>Master Menu settings</h1>
+  <%= form_with(url: "/menu_items", method: "post") do %>
+    <label for="name">Menu item name:</label>
+    <%= text_field_tag 'name',nil,placeholder:"Name",:required => true,class:'itemName_field' %>
+    <label for="category">Category:</label>
+    <%= text_field_tag 'category',nil,placeholder:"Category",:required => true,class:'category_field' %>
+    <label for="description">Description of item:</label>
+    <%= text_field_tag 'description',nil,placeholder:"Description",:required => true,class:'description_field' %>
+    <label for="price">Price:</label>
+    <%= number_field_tag 'price',nil,min: 1,:required => true,class: 'price_field'%>
+    <label for="image">Image URL:</label>
+    <%= text_field_tag 'image',nil,placeholder:"Image URL",:required => true,class:'image_field' %>
+    <label for="menu_id">Menu ID:</label>
+    <%= number_field_tag 'menu_id',nil,:required => true,class: 'menu_id_field'%>
+    <%= button_tag 'Create',type:'submit'%>
+  <% end %>
+  <% @menus.each do |menu| %>
     <h2>Menu id: <%=menu.id %>, Menu name: <%= menu.name %></h2>
     <% items = @menu_items.select{|item| item.menu_id == menu.id } %>
     <% items.each do |currentItem| %>
-        <img src=<%= currentItem.image %> >
-        <p><strong>Id:<%= currentItem.id %>, Name:<%= currentItem.name %></strong></p>
-        <p>Price:<%= currentItem.price %></p>
-        <p>Category:<%= currentItem.category %></p>
-        <p>Description:<%= currentItem.description %></p>
-        <%= button_to "Edit", edit_menu_item_path(currentItem.id),class:'EditMenuItem-button', method:"get" %>
-        <%= form_with(url: "/menu_items/#{currentItem.id}", method: "delete") do %>
-            <%= button_tag 'Delete',type:'submit', class:'DeleteMenuItem-button'%>
-        <% end %>
+      <img src=<%= currentItem.image %> >
+      <p><strong>Id:<%= currentItem.id %>, Name:<%= currentItem.name %></strong></p>
+      <p>Price:<%= currentItem.price %></p>
+      <p>Category:<%= currentItem.category %></p>
+      <p>Description:<%= currentItem.description %></p>
+      <%= button_to "Edit", edit_menu_item_path(currentItem.id),class:'EditMenuItem-button', method:"get" %>
+      <%= form_with(url: "/menu_items/#{currentItem.id}", method: "delete") do %>
+        <%= button_tag 'Delete',type:'submit', class:'DeleteMenuItem-button'%>
+      <% end %>
     <% end %>
     <hr>
-<% end %>
+  <% end %>
+</main>

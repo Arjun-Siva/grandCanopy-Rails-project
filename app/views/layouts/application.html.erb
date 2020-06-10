@@ -12,23 +12,20 @@
       <%= link_to  "/" do %>
         <% image_tag "home.svg", class: "Navbar-icon"%>
       <% end %>
-      <% if @current_user %>
-        <div class="AppHeader">
-          <p class="AppHeader-title"> Hello <%= @current_user.first_name %>! </p>
+      <div class="Navbar-login">
+        <% if @current_user %>
+          <p class="AppHeader-title"> Hello <%= @current_user.first_name %>!</p>
+          <p> | </p>
           <%= link_to "Sign-out", destroy_session_path, method: :delete, class: "AppHeader-signout" %>
-        </div>
-      <% end %>
-      <div class="HomePage-login">
-        <form method="get" action="/signin">
-          <input class="HomePage-loginButton" value="sign in" type="submit" />
-        </form>
-        <form method="get" action="/users/new">
-          <input class="HomePage-loginButton" value="sign up" type="submit" />
-        </form>
+        <% else %>
+          <%= link_to "Sign in", new_session_path, class: "Navbar-loginLink" %>
+          <p>|</p>
+          <%= link_to "Sign up", new_user_path, class: "Navbar-loginLink" %>
+        <% end %>
+        <%= link_to order_items_path do %>
+          <% image_tag "cart.svg", class: "Navbar-icon"%>
+        <% end %>
       </div>
-      <%= link_to order_items_path do %>
-        <% image_tag "cart.svg", class: "Navbar-icon"%>
-      <% end %>
     </div>
     <%= yield %>
   </body>

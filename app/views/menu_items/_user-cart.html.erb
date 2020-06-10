@@ -1,29 +1,34 @@
 <% subtotal = 0 %>
-<table class="Table-cart">
-  <tr>
-    <th>Name</th>
-    <th>Price per unit</th>
-    <th>Quantity</th>
-  </tr>
-  <% current_cart.each do |item| %>
-    <% if item["id"]!=nil %>
-      <% cart_item = MenuItem.find(item["id"].to_i) %>
-      <tr>
-        <td><%= cart_item.name %></td>
-        <td><%= cart_item.price %></td>
-        <td><%= item["quantity"] %></td>
-        <td>
-          <%= form_with(url: "/menu_items/#{cart_item.id}",method: "delete") do %>
-            <%= image_submit_tag "bin.svg", class: "CartItem-delete" %>
-          <% end %>
-        </td>
-      </tr>
-      <% subtotal=subtotal+ (((cart_item.price).to_i)*(item["quantity"].to_i)) %>
+<table class="CartTable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price per unit</th>
+      <th>Quantity</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% current_cart.each do |item| %>
+      <% if item["id"]!=nil %>
+        <% cart_item = MenuItem.find(item["id"].to_i) %>
+        <tr>
+          <td><%= cart_item.name %></td>
+          <td><%= cart_item.price %></td>
+          <td><%= item["quantity"] %></td>
+          <td class="CartTable-delete">
+            <%= form_with(url: "/menu_items/#{cart_item.id}",method: "delete") do %>
+              <%= image_submit_tag "bin.svg", class: "CartItem-delete" %>
+            <% end %>
+          </td>
+        </tr>
+        <% subtotal=subtotal+ (((cart_item.price).to_i)*(item["quantity"].to_i)) %>
+      <% end %>
     <% end %>
-  <% end %>
+  </tbody>
 </table>
-<h2>Subtotal:<%= subtotal %></h2>
+<p class="CartTotal">Subtotal: <%= subtotal %></p>
 <% if current_cart.length > 0 %>
-  <%= link_to "Proceed to checkout", order_items_path %>
+  <%= link_to "Proceed to checkout", order_items_path, class: "CartRedirect" %>
 <% end %>
 <hr>

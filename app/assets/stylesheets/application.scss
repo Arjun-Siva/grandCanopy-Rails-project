@@ -16,14 +16,13 @@
 
 body {
     font-family: 'Google Sans', arial, sans-serif;
+    background-image: url(/assets/hotel.jpeg);
+    margin: 0;
 }
 
 .Navbar {
     display: flex;
-    height: 50px;
-    background-color: #1a73e8;
     border: 1px solid transparent;
-    border-radius: 2px;
     justify-content: space-between;
 }
 
@@ -32,26 +31,35 @@ body {
     margin: 5px;
 }
 
-.AppHeader {
-    margin-left: 1500px;
-    display: flex;
+.Navbar-login {
     align-items: center;
-    justify-content: space-between;
+    display: inline-flex;
+    font-size: 26px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.Navbar-loginLink {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 2px 2px;
+    margin: 10px;
 }
 
 .AppHeader-title {
-    font-size: 20px;
-    font-weight: 600;
+    padding: 2px 2px;
+    margin: 10px;
 }
 
 .AppHeader-signout {
     color: #ffffff;
+    text-decoration: none;
     padding: 2px 2px;
-    font-size: 16px;
+    margin: 10px;
 }
 
 .BreakLine {
-    width: 440px;
+    width: 100%;
     border: 0.5px solid #dadce0;
     margin-bottom: 20px;
 }
