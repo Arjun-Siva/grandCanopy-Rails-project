@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   skip_before_action :ensure_cart_initialized
+  skip_before_action :changePrices
 
   def index
     if check_owner

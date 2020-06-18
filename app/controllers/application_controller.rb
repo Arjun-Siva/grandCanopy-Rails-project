@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :ensure_user_logged_in
   before_action :ensure_cart_initialized
+  before_action :changePrices
 
   def ensure_user_logged_in
     unless current_user
@@ -35,7 +36,7 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_clerk_logged_in
-    unless @current_user.type_of_user = "Clerk"
+    unless current_user.type_of_user = "Clerk"
       redirect_to "/"
     end
   end
@@ -54,6 +55,23 @@ class ApplicationController < ActionController::Base
       return true
     else
       return false
+    end
+  end
+
+  def changePrices
+    expiredOffers = Offer.where("to_date < ?", Date.today)
+    expiredOffers.each do |offer|
+      item = MenuItem.find(offer.menu_item_id)
+      item.price = offer.original_price
+      item.save
+      offer.destroy
+    end
+
+    currentOffers = Offer.where("from_date <= ?", Date.today).where("to_date >= ?", Date.today)
+    currentOffers.each do |offer|
+      item = MenuItem.find(offer.menu_item_id)
+      item.price = offer.offer_price
+      item.save
     end
   end
 end

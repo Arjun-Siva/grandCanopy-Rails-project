@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :ensure_user_logged_in
   skip_before_action :ensure_cart_initialized
+  skip_before_action :changePrices
 
   def new
     render "users/new"

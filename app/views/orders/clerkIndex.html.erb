@@ -1,4 +1,4 @@
-<%= button_to "Offline Billing", "/menu_items" %>
+<%= button_to "Offline billing", "/menu_items",class:'offlineBill-button', method:"get" %>
 <h1>Orders information</h1>
 <h2>Orders placed:</h2>
 <%= render partial: "order-template", locals:{
