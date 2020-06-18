@@ -1,11 +1,11 @@
-<main class="LoginPage" style="margin-top: 150px;">
+<main class="LoginPage" style="margin-top: 200px;">
   <p class="LoginPage-title">Sign in!</p>
   <% if flash[:alert] %>
     <p class="FlashMessage">
       <%= flash[:alert] %>
     </p>
   <% end %>
-  <div class="LoginPage-credentials">
+  <div id="signin" class="LoginPage-credentials">
     <%= form_with url:sessions_path do |form| %>
       <p class="FormInput-label">Mobile:</p>
       <%= form.text_field :mobile, class:"Form-input", autofocus: "autofocus" %>

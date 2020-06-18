@@ -1,5 +1,8 @@
 .HomePageMain {
+    background-image: url(/assets/hotel.jpeg);
     width: 100%;
+    height: inherit;
+    overflow: auto;
 }
 
 .HomePage-Title {
@@ -8,6 +11,10 @@
     margin: 0 auto;
     padding-left: 50px;
     padding-top: 50px;
+}
+
+.HomePage-Title:first-of-type {
+    padding-top: 100px;
 }
 
 .HomePage-navigate {

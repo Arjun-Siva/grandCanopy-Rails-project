@@ -2,6 +2,8 @@
     width: 100%;
     margin: 0 auto;
     color: white;
+    background-image: url(/assets/menu_items.jpg);
+    background-size: cover;
 }
 
 .MenuPage-title {
@@ -20,8 +22,10 @@
 }
 
 .MenuPage-cart {
+    position: fixed;
     margin: 25px;
-    padding-left: 25px;
+    background-color: rgba($color: #dadce0, $alpha: 0.3);
+    padding: 0 25px;
     border-left: 2px solid whitesmoke;
 }
 

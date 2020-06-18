@@ -9,24 +9,33 @@
   </head>
   <body>
     <div class="Navbar">
-      <%= link_to  "/" do %>
-        <% image_tag "home.svg", class: "Navbar-icon"%>
-      <% end %>
-      <div class="Navbar-login">
-        <% if @current_user %>
-          <p class="AppHeader-title"> Hello <%= @current_user.first_name %>!</p>
-          <p> | </p>
-          <%= link_to "Sign-out", destroy_session_path, method: :delete, class: "AppHeader-signout" %>
-        <% else %>
-          <%= link_to "Sign in", new_session_path, class: "Navbar-loginLink" %>
-          <p>|</p>
-          <%= link_to "Sign up", new_user_path, class: "Navbar-loginLink" %>
+      <div class="Navbar-content">
+        <%= link_to  "/" do %>
+          <% image_tag "home.svg", class: "Navbar-icon"%>
         <% end %>
-        <%= link_to order_items_path do %>
-          <% image_tag "cart.svg", class: "Navbar-icon"%>
-        <% end %>
+      </div>
+      <div>
+        <div class="Navbar-content">
+          <% if @current_user %>
+            <p class="AppHeader-title"> Hello <%= @current_user.first_name %>!</p>
+            <p> | </p>
+            <%= link_to "Sign-out", destroy_session_path, method: :delete, class: "AppHeader-signout" %>
+          <% else %>
+            <%= link_to "Sign in", new_session_path, class: "Navbar-loginLink" %>
+            <p>|</p>
+            <%= link_to "Sign up", new_user_path, class: "Navbar-loginLink" %>
+          <% end %>
+        </div>
+        <div class="Navbar-content">
+          <%= link_to order_items_path do %>
+            <% image_tag "cart.svg", class: "Navbar-icon"%>
+          <% end %>
+        </div>
       </div>
     </div>
     <%= yield %>
+    <div>
+      <p>All rights reserved</p>
+    </div>
   </body>
 </html>
