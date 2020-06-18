@@ -23,13 +23,14 @@
     <% items.each do |currentItem| %>
       <img src=<%= currentItem.image %> >
       <p><strong>Id:<%= currentItem.id %>, Name:<%= currentItem.name %></strong></p>
-      <p>Price:<%= currentItem.price %></p>
+      <p>Price:<%= currentItem.price %>  <%= (Offer.where("menu_item_id = ?", currentItem.id)).empty? ? "": "(Under offer)" %></p>
       <p>Category:<%= currentItem.category %></p>
       <p>Description:<%= currentItem.description %></p>
       <%= button_to "Edit", edit_menu_item_path(currentItem.id),class:'EditMenuItem-button', method:"get" %>
       <%= form_with(url: "/menu_items/#{currentItem.id}", method: "delete") do %>
         <%= button_tag 'Delete',type:'submit', class:'DeleteMenuItem-button'%>
       <% end %>
+      <%= button_to "Create offer", "/offers/new/#{currentItem.id}",class:'createOffer-button', method:"get" %>
     <% end %>
     <hr>
   <% end %>

@@ -5,72 +5,23 @@
     <form method="get" action="/menu_items">
       <input class="HomePage-naivgateButton" value="Order Now" type="submit" />
     </form>
-    <form method="get" action="/offers">
+    <form method="get" action="#offerHead">
       <input class="HomePage-naivgateButton" value="Offers" type="submit" />
     </form>
   </div>
-  <div class="HomePage-navigate">
-    <form method="get" action="/menu_items">
-      <input class="HomePage-naivgateButton" value="Order Now" type="submit" />
-    </form>
-    <form method="get" action="/offers">
-      <input class="HomePage-naivgateButton" value="Offers" type="submit" />
-    </form>
-  </div>
-  <div class="HomePage-navigate">
-    <form method="get" action="/menu_items">
-      <input class="HomePage-naivgateButton" value="Order Now" type="submit" />
-    </form>
-    <form method="get" action="/offers">
-      <input class="HomePage-naivgateButton" value="Offers" type="submit" />
-    </form>
-  </div>
-  <div class="HomePage-navigate">
-    <form method="get" action="/menu_items">
-      <input class="HomePage-naivgateButton" value="Order Now" type="submit" />
-    </form>
-    <form method="get" action="/offers">
-      <input class="HomePage-naivgateButton" value="Offers" type="submit" />
-    </form>
-  </div>
-  <div class="HomePage-navigate">
-    <form method="get" action="/menu_items">
-      <input class="HomePage-naivgateButton" value="Order Now" type="submit" />
-    </form>
-    <form method="get" action="/offers">
-      <input class="HomePage-naivgateButton" value="Offers" type="submit" />
-    </form>
-  </div>
-  <div class="HomePage-navigate">
-    <form method="get" action="/menu_items">
-      <input class="HomePage-naivgateButton" value="Order Now" type="submit" />
-    </form>
-    <form method="get" action="/offers">
-      <input class="HomePage-naivgateButton" value="Offers" type="submit" />
-    </form>
-  </div>
-  <div class="HomePage-navigate">
-    <form method="get" action="/menu_items">
-      <input class="HomePage-naivgateButton" value="Order Now" type="submit" />
-    </form>
-    <form method="get" action="/offers">
-      <input class="HomePage-naivgateButton" value="Offers" type="submit" />
-    </form>
-  </div>
-  <div class="HomePage-navigate">
-    <form method="get" action="/menu_items">
-      <input class="HomePage-naivgateButton" value="Order Now" type="submit" />
-    </form>
-    <form method="get" action="/offers">
-      <input class="HomePage-naivgateButton" value="Offers" type="submit" />
-    </form>
-  </div>
-  <div class="HomePage-navigate">
-    <form method="get" action="/menu_items">
-      <input class="HomePage-naivgateButton" value="Order Now" type="submit" />
-    </form>
-    <form method="get" action="/offers">
-      <input class="HomePage-naivgateButton" value="Offers" type="submit" />
-    </form>
-  </div>
+  <h1 id="offerHead">Offers</h1>
+  <% @offers.each do |offer| %>
+    <% item = MenuItem.find(offer.menu_item_id) %>
+    <div class='MenuItem'>
+      <img src=<%= item.image %> class="MenuItem-image" >
+      <h3><%= item.name %></h3>
+      <h4>Offer Price:<%= offer.offer_price %> <span class="oldPrice"><%= offer.original_price %></span></h4>
+      <p>Description:<%= item.description%></p>
+      <%= form_with(url: "/menu_items/#{item.id}", method:"put") do %>
+        <label for="quantity">Quantity:</label>
+        <%= number_field_tag 'quantity',nil,min: 1,:required => true,class: 'quantity_field'%>
+        <%= button_tag 'Add to cart',type:'submit'%>
+      <% end %>
+    </div>
+  <% end %>
 </main>

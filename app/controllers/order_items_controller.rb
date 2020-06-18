@@ -1,4 +1,6 @@
 class OrderItemsController < ApplicationController
+  skip_before_action :changePrices
+
   def index
     @current_cart = session[:cart].dup
     @offline_bill = @current_user.type_of_user == "Clerk"

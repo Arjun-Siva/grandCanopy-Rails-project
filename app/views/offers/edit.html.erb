@@ -1,0 +1,12 @@
+<h1>Edit offer:</h1>
+<p>Menu id: <%= @offer.id %></p>
+<p>Original price: <%= @offer.original_price %></p>
+<%= form_with(url: "/offers/#{@offer.id}", method: "put") do %>
+        <label for="offer_price">Offer price:</label>
+        <%= number_field_tag 'offer_price',nil,placeholder:"Offer-price",:required => true,value:@offer.offer_price,class:'offprice_field' %>
+        <label for="from_date">From-date:</label>
+        <%= date_field_tag 'from_date',nil,placeholder:"From-date",:required => true,value:@offer.from_date,class:'fromDate_field' %>
+        <label for="to_date">To-date:</label>
+        <%= date_field_tag 'to_date',nil,placeholder:"To-date",:required => true,value:@offer.to_date,class:'toDate_field' %>
+        <%= button_tag 'Update',type:'submit'%>
+<% end %>

@@ -1,4 +1,6 @@
 class MenusController < ApplicationController
+  skip_before_action :changePrices
+
   def index
     if check_owner
       @menus = Menu.all

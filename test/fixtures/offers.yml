@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  menu_item_id: 
+  original_price: 
+  offer_price: 
+  from_date: 
+  to_date: 2020-06-13 10:44:14
+
+two:
+  menu_item_id: 
+  original_price: 
+  offer_price: 
+  from_date: 
+  to_date: 2020-06-13 10:44:14

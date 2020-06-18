@@ -1,0 +1,15 @@
+<h1>Current-offers</h1>
+<% @offers.each do |offer| %>
+    <% item = MenuItem.find(offer.menu_item_id) %>
+    <h4>Menu item id:  <%= offer.menu_item_id %>  </h4>
+    <h4>Menu item name:  <%= item.name %> </h4>
+    <img src = <%= item.image %> >
+    <p>Original price: <%= offer.original_price %></p>
+    <p>Offer price: <%= offer.offer_price %></p>
+    <p>From: <%= offer.from_date.strftime("%d of %B, %Y") %></p>
+    <p>To: <%= offer.to_date.strftime("%d of %B, %Y") %></p>
+    <%= button_to "Edit", edit_offer_path(offer.id),class:'EditOffer-button', method:"get" %>
+    <%= form_with(url: "/offers/#{offer.id}", method: "delete") do %>
+        <%= button_tag 'Delete',type:'submit', class:'DeleteOffer-button'%>
+    <% end %>
+<% end %>
