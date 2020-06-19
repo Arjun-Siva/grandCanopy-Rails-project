@@ -37,4 +37,13 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def index
+    @current_user = current_user
+    if @current_user != nil
+      render "index"
+    else
+      redirect_to new_sessions_path
+    end
+  end
 end
