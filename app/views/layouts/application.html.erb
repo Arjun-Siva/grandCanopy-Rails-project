@@ -7,35 +7,60 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <body>
-    <div class="Navbar">
+    <div class="Navbar" id="navbar">
       <div class="Navbar-content">
-        <%= link_to  "/" do %>
-          <% image_tag "home.svg", class: "Navbar-icon"%>
+        <div class="Navbar-dropdown">
+          <%= image_tag "hamburger.svg", class: "Navbar-icon", id: "hamburger" %>
+          <div class="Navbar-dropdownContent", id="dropdown">
+            <div class="Navbar-content"><%= link_to "My Orders", "/orders", class: "Navbar-loginLink" %></div>
+            <div class="Navbar-content"><%= link_to "My Account", "/users", class: "Navbar-loginLink" %></div>
+          </div>
+        </div>
+      </div>
+      <div class="Navbar-content">
+        <%= link_to "/" do %>
+          <% image_tag "logo1noBG.png", class: "Navbar-logo", id: "navbar-logo"%>
         <% end %>
       </div>
-      <div>
-        <div class="Navbar-content">
-          <% if @current_user %>
-            <p class="AppHeader-title"> Hello <%= @current_user.first_name %>!</p>
-            <p> | </p>
-            <%= link_to "Sign-out", destroy_session_path, method: :delete, class: "AppHeader-signout" %>
-          <% else %>
-            <%= link_to "Sign in", new_session_path, class: "Navbar-loginLink" %>
-            <p>|</p>
-            <%= link_to "Sign up", new_user_path, class: "Navbar-loginLink" %>
-          <% end %>
-        </div>
-        <div class="Navbar-content">
-          <%= link_to order_items_path do %>
-            <% image_tag "cart.svg", class: "Navbar-icon"%>
-          <% end %>
-        </div>
+      <div class="Navbar-content">
+        <% if @current_user %>
+          <p class="AppHeader-title"> Hello <%= @current_user.first_name %>!</p>
+          <p> | </p>
+          <%= link_to "Sign-out", destroy_session_path, method: :delete, class: "Navbar-loginLink" %>
+        <% else %>
+          <%= link_to "Sign in", new_session_path, class: "Navbar-loginLink" %>
+          <p>|</p>
+          <%= link_to "Sign up", new_user_path, class: "Navbar-loginLink" %>
+        <% end %>
+        <%= link_to order_items_path do %>
+          <% image_tag "cart.svg", class: "Navbar-icon" %>
+        <% end %>
       </div>
     </div>
     <%= yield %>
-    <div>
+    <div class="Footer">
       <p>All rights reserved</p>
     </div>
   </body>
+  <script>
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+    if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0)
+    {
+      document.getElementById("navbar").style.height = "60px";
+      document.getElementById("navbar-logo").style.height = "60px";
+      document.getElementById("hamburger").style.height = "30px";
+      document.getElementById("dropdown").style.top = "60px";
+    }
+    else
+    {
+      document.getElementById("navbar").style.height = "100px";
+      document.getElementById("navbar-logo").style.height = "100px";
+      document.getElementById("hamburger").style.height = "40px";
+      document.getElementById("dropdown").style.top = "100px";
+    }
+    }
+  </script>
 </html>

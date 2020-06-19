@@ -1,11 +1,18 @@
 .HomePageMain {
-    background-image: url(/assets/hotel.jpeg);
-    width: 100%;
-    height: inherit;
-    overflow: auto;
+    height: 100%;
 }
 
-.HomePage-Title {
+.HomePage-welcome {
+    background-image: url(/assets/hotel.jpeg);
+    height: 100%;
+    width: 100%;
+}
+
+.HomePage-offers {
+    background-color: #dadce0;
+}
+
+.HomePage-title {
     font-size: 80px;
     color: #ffffff;
     margin: 0 auto;
@@ -13,7 +20,7 @@
     padding-top: 50px;
 }
 
-.HomePage-Title:first-of-type {
+.HomePage-title:first-of-type {
     padding-top: 100px;
 }
 

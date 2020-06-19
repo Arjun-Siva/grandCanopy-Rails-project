@@ -62,6 +62,22 @@ ActiveRecord::Schema.define(version: 2020_06_13_051414) do
     t.text "address"
   end
 
+  create_table "temp_order_items", force: :cascade do |t|
+    t.integer "menu_item_id"
+    t.integer "quantity"
+    t.integer "price"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "temp_order_id"
+  end
+
+  create_table "temp_orders", force: :cascade do |t|
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "email"

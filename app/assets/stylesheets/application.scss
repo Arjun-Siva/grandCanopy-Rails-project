@@ -29,23 +29,56 @@ body {
     display: flex;
     overflow: hidden;
     position: fixed;
+    top: 0;
     width: 100%;
+    height: 100px;
+    z-index: 99;
     margin: 0;
     justify-content: space-between;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(35, 10, 10, 0.76)), url(/assets/navbar.jpg);
+    background-color: rgba($color: #000000, $alpha: 0.7);
+}
+
+.Navbar-dropdown {
+    width: 200px;
+    height: 100px;
+    position: relative;
+    display: block;
+    align-items: center;
+}
+
+.Navbar-dropdownContent {
+    display: none;
+    width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(256, 256, 256, 0.1);
+    z-index: 99;
+    font-size: 26px;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+}
+
+.Navbar-dropdown:hover .Navbar-dropdownContent {
+    display: block;
+}
+
+.Navbar-logo {
+    margin-left: 100px;
+    height: 100px;
 }
 
 .Navbar-icon {
     height: 40px;
-    margin: 5px;
+    margin: 30px;
+    margin-left: 15px;
+    float: left;
 }
 
 .Navbar-content {
+    color: #ffffff;
     align-items: center;
     font-size: 26px;
     font-weight: 600;
-    color: #000000;
-    float: left;
     display: flex;
     text-align: center;
     text-decoration: none;
@@ -68,6 +101,11 @@ body {
     text-decoration: none;
     padding: 2px 2px;
     margin: 10px;
+}
+
+.Footer {
+    position: fixed;
+    bottom: 0;
 }
 
 .BreakLine {
