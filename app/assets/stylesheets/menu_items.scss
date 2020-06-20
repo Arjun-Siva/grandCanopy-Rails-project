@@ -1,19 +1,18 @@
 .MenuPageMain {
     width: 100%;
     margin: 0 auto;
-    margin-top: 200px;
     color: white;
-}
-
-.MenuPage-title {
-    text-align: center;
-    color: #ffffff;
-    font-size: 70px;
+    background-image: url(/assets/menu_items.jpg);
 }
 
 .MenuPage {
+    padding-top: 150px;
     display: flex;
     justify-content: space-between;
+}
+
+.MenuPage-menu {
+    display: block;
 }
 
 .MenuPage-items {
@@ -41,11 +40,12 @@
     margin: 25px;
     width: 250px;
     border: 2px solid #351010;
-    border-radius: 4px;
+    border-radius: 8px;
     box-shadow: 0 0 20px rgb(255, 255, 255);
 }
 
 .MenuItem-image {
     width: 250px;
     height: 250px;
+    border-radius: 8px;
 }

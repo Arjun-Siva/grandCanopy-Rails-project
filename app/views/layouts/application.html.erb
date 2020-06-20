@@ -10,34 +10,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <body>
     <div class="Navbar" id="navbar">
-      <div class="Navbar-content">
-        <div class="Navbar-dropdown">
-          <%= image_tag "hamburger.svg", class: "Navbar-icon", id: "hamburger" %>
-          <div class="Navbar-dropdownContent", id="dropdown">
-            <div class="Navbar-content"><%= link_to "My Orders", "/orders", class: "Navbar-loginLink" %></div>
-            <div class="Navbar-content"><%= link_to "My Account", "/users", class: "Navbar-loginLink" %></div>
-          </div>
-        </div>
-      </div>
-      <div class="Navbar-content">
-        <%= link_to "/" do %>
-          <% image_tag "logo1noBG.png", class: "Navbar-logo", id: "navbar-logo"%>
-        <% end %>
-      </div>
-      <div class="Navbar-content">
-        <% if @current_user %>
-          <p class="AppHeader-title"> Hello <%= @current_user.first_name %>!</p>
-          <p> | </p>
-          <%= link_to "Sign-out", destroy_session_path, method: :delete, class: "Navbar-loginLink" %>
-        <% else %>
-          <%= link_to "Sign in", new_session_path, class: "Navbar-loginLink" %>
-          <p>|</p>
-          <%= link_to "Sign up", new_user_path, class: "Navbar-loginLink" %>
-        <% end %>
-        <%= link_to order_items_path do %>
-          <% image_tag "cart.svg", class: "Navbar-icon" %>
-        <% end %>
-      </div>
+      <%= link_to "/", class:"active" do %>
+        <% image_tag "logo1noBG.png", class: "Navbar-logo", id: "navbar-logo"%>
+      <% end %>
+      <%= link_to "My Orders", "/orders", class: "Navbar-link" %>
+      <%= link_to "My Account", "/users", class: "Navbar-link" %>
+      <% if @current_user %>
+        <p class="AppHeader-title"> Hello <%= @current_user.first_name %>!</p>
+        <p class="AppHeader-title"> | </p>
+        <%= link_to "Sign-out", destroy_session_path, method: :delete, class: "Navbar-link" %>
+      <% else %>
+        <%= link_to "Sign in", new_session_path, class: "Navbar-link" %>
+        <p class="AppHeader-title">|</p>
+        <%= link_to "Sign up", new_user_path, class: "Navbar-link" %>
+      <% end %>
+      <%= link_to order_items_path do %>
+        <% image_tag "cart.svg", class: "Navbar-icon" %>
+      <% end %>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <%= image_tag "hamburger.svg", class: "Navbar-icon", id: "hamburger" %>
+      </a>
     </div>
     <%= yield %>
     <div class="Footer">
@@ -45,22 +37,15 @@
     </div>
   </body>
   <script>
-    window.onscroll = function() {scrollFunction()};
-    function scrollFunction() {
-    if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0)
-    {
-      document.getElementById("navbar").style.height = "60px";
-      document.getElementById("navbar-logo").style.height = "60px";
-      document.getElementById("hamburger").style.height = "30px";
-      document.getElementById("dropdown").style.top = "60px";
-    }
-    else
-    {
-      document.getElementById("navbar").style.height = "100px";
-      document.getElementById("navbar-logo").style.height = "100px";
-      document.getElementById("hamburger").style.height = "40px";
-      document.getElementById("dropdown").style.top = "100px";
-    }
+    function myFunction() {
+      var x = document.getElementById("navbar");
+      if (x.className === "Navbar")
+      {
+        x.className += " responsive";
+      }
+      else {
+        x.className = "Navbar";
+      }
     }
   </script>
 </html>

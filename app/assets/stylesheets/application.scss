@@ -26,7 +26,90 @@ body {
 }
 
 .Navbar {
-    display: flex;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    margin: 0;
+    color: #ffffff;
+}
+
+.Navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+    font-size: 26px;
+    margin: 10px;
+}
+
+.Navbar a:hover {
+    background-color: #dddddd;
+    color: black;
+}
+
+.Navbar .icon {
+    display: none;
+}
+
+.Navbar-logo {
+    height: 100px;
+}
+
+.Navbar-icon {
+    height: 40px;
+    margin: 30px 20px;
+    margin-left: 10px;
+}
+
+.AppHeader-title {
+    margin: 10px;
+    font-size: 22px;
+}
+
+@media screen and (max-width: 600px) {
+    .Navbar a:not(:first-child) {
+        display: none;
+    }
+    .Navbar a.icon {
+        float: right;
+        display: block;
+        margin: 0;
+    }
+    .AppHeader-title {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .Navbar.responsive {
+        position: fixed;
+    }
+    .Navbar.responsive .icon {
+        position: fixed;
+        right: 0;
+        top: 0;
+    }
+    .Navbar.responsive a {
+        float: none;
+        display: block;
+        text-align: center;
+        height: 40px;
+    }
+    .Navbar a:first-child {
+        text-align: left;
+        float: left;
+    }
+    .Navbar.responsive .Navbar-icon:first-of-type {
+        margin: 30px 20px;
+    }
+}
+
+
+/*.Navbar {
     overflow: hidden;
     position: fixed;
     top: 0;
@@ -34,8 +117,11 @@ body {
     height: 100px;
     z-index: 99;
     margin: 0;
-    justify-content: space-between;
     background-color: rgba($color: #000000, $alpha: 0.7);
+}
+
+.icon {
+    display: none;
 }
 
 .Navbar-dropdown {
@@ -63,7 +149,6 @@ body {
 }
 
 .Navbar-logo {
-    margin-left: 100px;
     height: 100px;
 }
 
@@ -101,7 +186,7 @@ body {
     text-decoration: none;
     padding: 2px 2px;
     margin: 10px;
-}
+}*/
 
 .Footer {
     position: fixed;
@@ -121,8 +206,16 @@ body {
     margin-bottom: 10px;
 }
 
+.container {
+    height: 150px;
+}
+
 .animate {
     animation: animatezoom 0.6s
+}
+
+.Menubar {
+    width: 50px;
 }
 
 @keyframes animatezoom {

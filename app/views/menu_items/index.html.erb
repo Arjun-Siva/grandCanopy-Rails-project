@@ -1,7 +1,6 @@
 <main class="MenuPageMain">
-  <p class="MenuPage-title">Menu table</p>
   <div class="MenuPage">
-    <div>
+    <div class="MenuPage-menu">
       <h2>Indian</h2>
       <%= render partial: "menu-item", locals:{
       items: @currentMenu.select{|item| item.category=='Indian'}} %>
