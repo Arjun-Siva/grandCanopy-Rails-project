@@ -26,5 +26,20 @@
           <%= button_tag 'Add to cart',type:'submit'%>
         <% end %>
       </div>
+    </div>
+    <% end %>
+    <h1>Frequently ordered</h1>
+    <% @top3.each do |item| %>
+      <div class='MenuItem'>
+        <img src=<%= item.image %> class="MenuItem-image" >
+        <h3><%= item.name %></h3>
+        <h4>Price:<%= item.price %></h4>
+        <p>Description:<%= item.description%></p>
+        <%= form_with(url: "/menu_items/#{item.id}", method:"put") do %>
+          <label for="quantity">Quantity:</label>
+          <%= number_field_tag 'quantity',nil,min: 1,:required => true,class: 'quantity_field'%>
+          <%= button_tag 'Add to cart',type:'submit'%>
+        <% end %>
+      </div>
     <% end %>
   </main>

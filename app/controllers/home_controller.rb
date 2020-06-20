@@ -5,7 +5,10 @@ class HomeController < ApplicationController
   def index
     current_user
     @offers = Offer.where("from_date <= ?", Date.today).where("to_date >= ?", Date.today)
-    OrderItem.group(:id).count
+    t = OrderItem.select(:menu_item_id).group(:menu_item_id).count()
+    k = t.keys
+    k = k.sort_by { |key| [t[key]] }
+    @top3 = MenuItem.find([k[-1], k[-2], k[-3]])
     render "index"
   end
 end

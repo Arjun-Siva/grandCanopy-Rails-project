@@ -2,15 +2,12 @@
   <p class="MenuPage-title">Menu table</p>
   <div class="MenuPage">
     <div>
-      <h2>Indian</h2>
+      <%categories= @currentMenu.select([:created_at,:category]).order(:created_at).map(&:category).uniq %>
+      <%categories.each do |category|%>
+      <h2><%= category %></h2>
       <%= render partial: "menu-item", locals:{
-      items: @currentMenu.select{|item| item.category=='Indian'}} %>
-      <h2>Chinese</h2>
-      <%= render partial: "menu-item", locals:{
-      items: @currentMenu.select{|item| item.category=='Chinese'}} %>
-      <h2>Milkshakes</h2>
-      <%= render partial: "menu-item", locals:{
-      items: @currentMenu.select{|item| item.category=='Milkshake'}} %>
+      items: @currentMenu.select{|item| item.category==category}} %>
+      <%end%>
     </div>
     <div class="MenuPage-cart">
       <p class="MenuPage-cartTitle">Your cart</p>
