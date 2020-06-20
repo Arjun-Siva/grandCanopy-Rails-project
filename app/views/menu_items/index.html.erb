@@ -1,6 +1,7 @@
 <main class="MenuPageMain">
   <p class="MenuPage-title">Menu table</p>
   <div class="MenuPage">
+    <% if !(@currentMenu.empty?) %>
     <div>
       <%categories= @currentMenu.select([:created_at,:category]).order(:created_at).map(&:category).uniq %>
       <%categories.each do |category|%>
@@ -13,5 +14,6 @@
       <p class="MenuPage-cartTitle">Your cart</p>
       <%= render partial: "user-cart",locals:{current_cart: @current_cart.dup }%>
     </div>
+    <% end %>
   </div>
 </main>
