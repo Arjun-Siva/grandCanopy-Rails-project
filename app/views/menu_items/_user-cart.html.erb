@@ -15,7 +15,11 @@
         <tr>
           <td><%= cart_item.name %></td>
           <td><%= cart_item.price %></td>
-          <td><%= item["quantity"] %></td>
+          <td>
+            <%= button_to "+", update_plusOne_path(cart_item.id),class:'plusOne-button', method:"put" %>
+            <%= item["quantity"] %>
+            <%= button_to "-", update_minusOne_path(cart_item.id),class:'minusOne-button', method:"put" %>
+          </td>
           <td class="CartTable-delete">
             <%= form_with(url: "/menu_items/#{cart_item.id}",method: "delete") do %>
               <%= image_submit_tag "bin.svg", class: "CartItem-delete" %>

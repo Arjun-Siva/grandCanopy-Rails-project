@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
   def index
     @current_user = current_user
-    if @current_user != nil
+    if @current_user != nil and @current_user.type_of_user == "Customer"
       render "index"
     else
       redirect_to new_sessions_path
