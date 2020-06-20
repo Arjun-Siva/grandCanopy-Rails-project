@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get "/" => "home#index"
+  put "/menu_items/:id/plusOne" => "menu_items#plusOne", as: :update_plusOne
+  put "/menu_items/:id/minusOne" => "menu_items#minusOne", as: :update_minusOne
   resources :menu_items
   resources :users
   resources :orders

@@ -5,7 +5,11 @@ class MenuItemsController < ApplicationController
     if check_customer or check_clerk
       @current_cart = session[:cart].dup
       default_menu = Menu.find_by(default: true)
-      @currentMenu = MenuItem.where("menu_id = ?", default_menu.id)
+      if default_menu == nil
+        @current_menu = []
+      else
+        @currentMenu = MenuItem.where("menu_id = ?", default_menu.id)
+      end
       render "index"
     elsif check_owner
       @menus = Menu.all
@@ -68,6 +72,24 @@ class MenuItemsController < ApplicationController
       item.save
     end
     redirect_to menu_items_path
+  end
+
+  def plusOne
+    id = (params[:id]).to_i
+    item = session[:cart].select { |i| i["id"].to_i == id }
+    item[0]["quantity"] = item[0]["quantity"].to_i + 1
+    redirect_to menu_items_path
+  end
+
+  def minusOne
+    id = (params[:id]).to_i
+    item = session[:cart].select { |i| i["id"].to_i == id }
+    if item[0]["quantity"].to_i == 1
+      redirect_to menu_items_path
+    else
+      item[0]["quantity"] = item[0]["quantity"].to_i - 1
+      redirect_to menu_items_path
+    end
   end
 
   def destroy
