@@ -1,14 +1,14 @@
 <div class="MenuPage-items">
   <% items.each do |item| %>
-    <div class='MenuItem'>
+    <div class="MenuItem">
       <img src=<%= item.image %> class="MenuItem-image" >
-      <h3><%= item.name %></h3>
-      <h4>Price:<%= item.price %></h4>
+      <p class="MenuItem-name"><%= item.name %></p>
+      <p>Price:<%= item.price %></p>
       <p>Description:<%= item.description%></p>
       <%= form_with(url: "/menu_items/#{item.id}", method:"put") do %>
         <label for="quantity">Quantity:</label>
-        <%= number_field_tag 'quantity',nil,min: 1,max: 10,:required => true,class: 'quantity_field'%>
-        <%= button_tag 'Add to cart',type:'submit'%>
+        <%= number_field_tag "quantity",nil,min: 1,max: 10,:required => true,class: "quantity_field"%>
+        <%= button_tag "Add to cart",type:"submit"%>
       <% end %>
     </div>
   <% end %>

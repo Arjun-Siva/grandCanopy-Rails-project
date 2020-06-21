@@ -14,11 +14,11 @@
         <% image_tag "logo1noBG.png", class: "Navbar-logo", id: "navbar-logo"%>
       <% end %>
       <div class="Navbar-container">
-        <%= link_to "My Orders", "/orders", class: "Navbar-link" %>
-        <%= link_to "My Account", "/users", class: "Navbar-link" %>
         <% if @current_user %>
           <p class="AppHeader-title">Hello - <%= @current_user.first_name %>!</p>
           <%= link_to "Sign-out", destroy_session_path, method: :delete, class: "Navbar-link" %>
+          <%= link_to "My Orders", "/orders", class: "Navbar-link" %>
+          <%= link_to "My Account", "/users", class: "Navbar-link" %>
         <% else %>
           <%= link_to "Sign in", new_session_path, class: "Navbar-link" %>
           <%= link_to "Sign up", new_user_path, class: "Navbar-link" %>

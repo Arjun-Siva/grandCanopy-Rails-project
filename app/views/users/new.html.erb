@@ -9,17 +9,17 @@
     <div class="LoginPage-credentials">
       <%= form_with url:users_path do |form| %>
         <p class="FormInput-label">First Name:</p>
-        <%= form.text_field :first_name,:required => true,class:"Form-input" %>
+        <%= form.text_field :first_name,class:"Form-input" %>
         <p class="FormInput-label">Last Name:</p>
         <%= form.text_field :last_name, class:"Form-input"%>
         <p class="FormInput-label">Email:</p>
-        <%= form.email_field :email,:required => true, class:"Form-input" %>
+        <%= form.email_field :email, class:"Form-input" %>
         <p class="FormInput-label">Mobile:</p>
-        <%= form.text_field :mobile,:required => true,:minlength => 10,:maxlength => 10, class:"Form-input" %>
+        <%= form.text_field :mobile, class:"Form-input" %>
         <p class="FormInput-label">Address:</p>
-        <%= form.text_field :address,:required => true, class:"Form-input" %>
+        <%= form.text_field :address, class:"Form-input" %>
         <p class="FormInput-label">Password:</p>
-        <%= form.password_field :password,:required => true,:minlength => 5, class:"Form-input" %>
+        <%= form.password_field :password, class:"Form-input" %>
         <p class="FormInput-label">Confirm Password:</p>
         <%= form.password_field :password_confirmation, class:"Form-input" %>
         <div class="LoginPage-container">
