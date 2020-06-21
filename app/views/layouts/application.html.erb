@@ -10,26 +10,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <body>
     <div class="Navbar" id="navbar">
-      <%= link_to "/", class:"active" do %>
+      <%= link_to "/" do %>
         <% image_tag "logo1noBG.png", class: "Navbar-logo", id: "navbar-logo"%>
       <% end %>
-      <%= link_to "My Orders", "/orders", class: "Navbar-link" %>
-      <%= link_to "My Account", "/users", class: "Navbar-link" %>
-      <% if @current_user %>
-        <p class="AppHeader-title"> Hello <%= @current_user.first_name %>!</p>
-        <p class="AppHeader-title"> | </p>
-        <%= link_to "Sign-out", destroy_session_path, method: :delete, class: "Navbar-link" %>
-      <% else %>
-        <%= link_to "Sign in", new_session_path, class: "Navbar-link" %>
-        <p class="AppHeader-title">|</p>
-        <%= link_to "Sign up", new_user_path, class: "Navbar-link" %>
-      <% end %>
-      <%= link_to order_items_path do %>
-        <% image_tag "cart.svg", class: "Navbar-icon" %>
-      <% end %>
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <%= image_tag "hamburger.svg", class: "Navbar-icon", id: "hamburger" %>
-      </a>
+      <div class="Navbar-container">
+        <%= link_to "My Orders", "/orders", class: "Navbar-link" %>
+        <%= link_to "My Account", "/users", class: "Navbar-link" %>
+        <% if @current_user %>
+          <p class="AppHeader-title">Hello - <%= @current_user.first_name %>!</p>
+          <%= link_to "Sign-out", destroy_session_path, method: :delete, class: "Navbar-link" %>
+        <% else %>
+          <%= link_to "Sign in", new_session_path, class: "Navbar-link" %>
+          <%= link_to "Sign up", new_user_path, class: "Navbar-link" %>
+        <% end %>
+        <%= link_to menu_items_path do %>
+          <% image_tag "food.svg", class: "Navbar-icon" %>
+        <% end %>
+        <%= link_to order_items_path do %>
+          <% image_tag "cart.svg", class: "Navbar-icon" %>
+        <% end %>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <%= image_tag "hamburger.svg", class: "Navbar-icon", id: "hamburger" %>
+        </a>
+      </div>
+      <div class="Navbar-dropdown">
+        <% if @current_user %>
+          <p class="AppHeader-dtitle">Hello - <%= @current_user.first_name %>!</p>
+          <%= link_to "My Orders", "/orders", class: "Navbar-dlink" %>
+          <%= link_to "My Account", "/users", class: "Navbar-dlink" %>
+          <%= link_to "Sign-out", destroy_session_path, method: :delete, class: "Navbar-dlink" %>
+        <% else %>
+          <%= link_to "Sign in", new_session_path, class: "Navbar-dlink" %>
+          <%= link_to "Sign up", new_user_path, class: "Navbar-dlink" %>
+        <% end %>
+      </div>
     </div>
     <%= yield %>
     <div class="Footer">

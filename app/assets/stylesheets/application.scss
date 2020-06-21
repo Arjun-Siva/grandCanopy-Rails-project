@@ -34,9 +34,18 @@ body {
     z-index: 99;
     margin: 0;
     color: #ffffff;
+    align-items: center;
 }
 
-.Navbar a {
+.Navbar-container {
+    display: flex;
+    align-items: center;
+    float: right;
+    height: 110px;
+    transition: 0.5s;
+}
+
+.Navbar-link {
     float: left;
     display: block;
     color: #f2f2f2;
@@ -44,11 +53,16 @@ body {
     text-decoration: none;
     font-size: 26px;
     margin: 10px;
+    transition: 0.5s;
 }
 
-.Navbar a:hover {
-    background-color: #dddddd;
-    color: black;
+.Navbar-dlink {
+    display: block;
+    color: #f2f2f2;
+    text-decoration: none;
+    font-size: 26px;
+    margin: 10px;
+    transition: 0.5s;
 }
 
 .Navbar .icon {
@@ -57,54 +71,114 @@ body {
 
 .Navbar-logo {
     height: 100px;
+    margin: 5px;
+    transition: 0.5s;
 }
 
 .Navbar-icon {
     height: 40px;
-    margin: 30px 20px;
-    margin-left: 10px;
+    margin: 10px;
+    transition: 0.5s;
 }
 
 .AppHeader-title {
     margin: 10px;
-    font-size: 22px;
+    font-size: 26px;
+    transition: 0.5s;
 }
 
-@media screen and (max-width: 600px) {
-    .Navbar a:not(:first-child) {
+.AppHeader-dtitle {
+    display: none;
+    margin: 10px;
+    font-size: 18px;
+    transition: 0.5s;
+}
+
+.Navbar-dropdown {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    display: none;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+}
+
+@media screen and (max-width: 1200px) {
+    .Navbar-logo {
+        height: 70px;
+    }
+    .Navbar-container {
+        height: 70px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .Navbar .Navbar-link {
+        font-size: 24px;
+    }
+    .AppHeader-title {
+        font-size: 24px;
+    }
+    .Navbar-logo {
+        height: 60px;
+    }
+    .Navbar-container {
+        height: 60px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .Navbar .Navbar-link {
+        font-size: 22px;
+    }
+    .AppHeader-title {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .Navbar .Navbar-link {
+        font-size: 20px;
+    }
+    .AppHeader-title {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .Navbar .Navbar-link {
         display: none;
     }
-    .Navbar a.icon {
+    .Navbar .icon {
         float: right;
         display: block;
         margin: 0;
     }
-    .AppHeader-title {
-        display: none;
+    .Navbar-icon {
+        height: 35px;
+    }
+    .Navbar.responsive .Navbar-dropdown {
+        display: block;
+        width: 200px;
+        max-height: min-content;
+        text-align: center;
+    }
+    .Navbar.responsive .Navbar-dlink {
+        font-size: 18px;
     }
 }
 
-@media screen and (max-width: 600px) {
-    .Navbar.responsive {
-        position: fixed;
+@media screen and (max-width: 650px) {
+    .AppHeader-title {
+        display: none;
     }
-    .Navbar.responsive .icon {
-        position: fixed;
-        right: 0;
-        top: 0;
+    .Navbar-icon {
+        height: 30px;
     }
-    .Navbar.responsive a {
-        float: none;
+    .Navbar.responsive .Navbar-dropdown {
+        width: 100%;
+    }
+    .Navbar.responsive .AppHeader-dtitle {
         display: block;
-        text-align: center;
-        height: 40px;
-    }
-    .Navbar a:first-child {
-        text-align: left;
-        float: left;
-    }
-    .Navbar.responsive .Navbar-icon:first-of-type {
-        margin: 30px 20px;
     }
 }
 

@@ -18,18 +18,20 @@
     margin: 0 auto;
     padding-left: 50px;
     padding-top: 50px;
+    transition: 0.5s;
 }
 
 .HomePage-title:first-of-type {
-    padding-top: 100px;
+    padding-top: 120px;
 }
 
 .HomePage-navigate {
     align-items: center;
     display: flex;
-    max-width: 478px;
+    width: min-content;
     margin: 0 auto;
     margin-top: 150px;
+    transition: 0.5s;
 }
 
 .HomePage-naivgateButton {
@@ -39,12 +41,34 @@
     border-radius: 8px;
     color: #ffffff;
     padding: 2px 6px;
-    font-size: 46px;
+    font-size: 40px;
     margin: 20px;
+    transition: 0.5s;
 }
 
 .HomePage-naivgateButton:hover {
     background-color: #ffffff;
     opacity: 0.5;
     color: #351010;
+}
+
+@media screen and (max-width: 1200px) {
+    .HomePage-title {
+        font-size: 60px;
+    }
+    .HomePage-naivgate {
+        max-width: 355px;
+    }
+    .HomePage-navigate {
+        margin-top: 100px;
+    }
+    .HomePage-naivgateButton {
+        font-size: 32px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .HomePage-title {
+        font-size: 48px;
+    }
 }

@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
       elsif (user.type_of_user == "Clerk")
         redirect_to orders_path
       else
-        redirect_to menus_path
+        redirect_to menu_items_path
       end
     else
       redirect_to new_session_path, alert: "Invalid credentials. Please try again!"
