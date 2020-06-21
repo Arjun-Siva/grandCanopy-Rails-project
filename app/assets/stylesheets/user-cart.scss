@@ -44,6 +44,16 @@
 }
 
 .CartRedirect {
-    text-decoration: none;
-    color: #ffffff;
+    background-color: #f3f3f3;
+    color: #351010;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 26px;
+    padding: 2px;
+
+}
+
+.CartRedirect:hover {
+    background-color: #351010;
+    color: #f3f3f3;
 }

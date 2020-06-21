@@ -58,20 +58,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-    if check_customer or check_owner
-      user = current_user
-      user.first_name = params[:first_name]
-      user.last_name = params[:last_name]
-      user.email = params[:email]
-      user.address = params[:address]
-      user.save
-      redirect_to users_path
-    else
-      redirect_to "/"
-    end
-  end
-
   def destroy
     if check_customer or check_owner
       User.find(params[:id]).destroy

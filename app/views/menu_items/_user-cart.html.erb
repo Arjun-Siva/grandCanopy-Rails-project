@@ -16,9 +16,11 @@
           <td><%= cart_item.name %></td>
           <td><%= cart_item.price %></td>
           <td>
+          <div style="display: flex;">
             <%= button_to "+", update_plusOne_path(cart_item.id),class:'plusOne-button', method:"put" %>
             <%= item["quantity"] %>
             <%= button_to "-", update_minusOne_path(cart_item.id),class:'minusOne-button', method:"put" %>
+            </div>
           </td>
           <td class="CartTable-delete">
             <%= form_with(url: "/menu_items/#{cart_item.id}",method: "delete") do %>
@@ -31,8 +33,10 @@
     <% end %>
   </tbody>
 </table>
+<div style="display: flex; align-items: center; justify-content: space-between;">
 <p class="CartTotal">Subtotal: <%= subtotal %></p>
 <% if current_cart.length > 0 %>
-  <%= link_to "Proceed to checkout", order_items_path, class: "CartRedirect" %>
+  <%= button_to "Proceed to checkout", order_items_path, class: "CartRedirect" %>
 <% end %>
+</div>
 <hr>

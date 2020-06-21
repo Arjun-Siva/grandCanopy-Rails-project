@@ -21,7 +21,11 @@
 }
 
 .MenuPage-cart {
-    float: right;
+    position: fixed;
+    top:150px;
+    right:0;
+    overflow: auto;
+    max-width: 500px;
     background-color: rgba($color: #dadce0, $alpha: 0.3);
     padding: 0 25px;
     border-left: 2px solid whitesmoke;
