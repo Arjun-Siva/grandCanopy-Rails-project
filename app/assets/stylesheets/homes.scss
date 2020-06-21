@@ -10,6 +10,7 @@
 
 .HomePage-offers {
     background-color: #dadce0;
+    display: flex;
 }
 
 .HomePage-title {
@@ -50,6 +51,10 @@
     background-color: #ffffff;
     opacity: 0.5;
     color: #351010;
+}
+
+.oldPrice {
+    text-decoration: line-through;
 }
 
 @media screen and (max-width: 1200px) {
