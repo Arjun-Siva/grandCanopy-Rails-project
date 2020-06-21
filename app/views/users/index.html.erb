@@ -1,6 +1,9 @@
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <h1>My info</h1>
 <p>First name: <%= @current_user.first_name %> </p> 
 <p>Last name: <%= @current_user.last_name %> </p>
 <p>Email: <%= @current_user.email %> </p>
 <p>Mobile: <%= @current_user.mobile %> </p>
 <p>Address: <%= @current_user.address %> </p>
+<%= button_to "Edit", edit_user_path(@current_user.id),class:'EditUser-button', method:"get" %>
+<%= button_to "Delete my Account", "/users/#{@current_user.id}",class: 'DeleteUser-button', method:"delete"%>

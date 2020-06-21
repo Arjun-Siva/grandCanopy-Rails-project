@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   post "/offers/:id" => "offers#create"
   resources :offers
   get "/signin" => "sessions#new", as: :new_session
-  post "/signin" => "sessions#create", as: :sessions
+  post "/signin" => "sessions#create", as: :session
   delete "/signout" => "sessions#destroy", as: :destroy_session
 end

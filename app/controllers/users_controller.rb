@@ -30,7 +30,7 @@ class UsersController < ApplicationController
           session[:current_user_id] = user.id
           redirect_to menu_items_path
         else
-          redirect_to new_sessions_path, alert: "User already exists! Please sign in"
+          redirect_to new_session_path, alert: "User already exists! Please sign in"
         end
       else
         redirect_to new_user_path, alert: new_user.errors.full_messages.join(", ")
@@ -43,7 +43,40 @@ class UsersController < ApplicationController
     if @current_user != nil and @current_user.type_of_user == "Customer"
       render "index"
     else
-      redirect_to new_sessions_path
+      redirect_to new_session_path
+    end
+  end
+
+  def edit
+    if check_customer or check_owner
+      @user = current_user
+      if @user.id == params[:id]
+        render "edit"
+      end
+    else
+      redirect_to "/"
+    end
+  end
+
+  def update
+    if check_customer or check_owner
+      user = current_user
+      user.first_name = params[:first_name]
+      user.last_name = params[:last_name]
+      user.email = params[:email]
+      user.address = params[:address]
+      user.save
+      redirect_to users_path
+    else
+      redirect_to "/"
+    end
+  end
+
+  def destroy
+    if check_customer or check_owner
+      User.find(params[:id]).destroy
+      session[:current_user_id] = nil
+      redirect_to "/"
     end
   end
 end

@@ -1,3 +1,4 @@
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <h2>Generate sales summary:</h2>
 <%= form_with(url: "/orders", method:"post",class: "salesDates") do %>
     <label for="from_date">From:</label>
@@ -11,6 +12,7 @@
 <h4>Total no. of offline orders: <%= @offlineOrders %></h4>
 <h3>Online orders summary</h3>
 <% onlineTotal=0 %>
+<% data=[] %>
 <table>
     <tr>
         <th>Menu Item Id</th>
@@ -19,6 +21,7 @@
         <th>Subtotal</th>
     <tr>
     <% @onlineData.keys.each do |key| %>
+        <% data.push([@onlineData[key]['name'].to_s+"("+key.to_s+")",@onlineData[key]['subtotal']])%>
         <tr>
             <td><%= key %></td>
             <td><%= @onlineData[key]['name'] %></td>
@@ -29,9 +32,11 @@
     <% end %>
 </table>
 <h2>Total amount through online sales(inclusive of taxes and delivery charges):<%= onlineTotal*1.05+(@onlineOrders*25) %></h2>
-
+<h2>Contribution to the total revenue by each menu item in online sales</h2>
+<%= pie_chart data, donut: true, messages: {empty: "No data"}  %>
 <h3>Offline orders summary</h3>
 <% offlineTotal=0 %>
+<% data=[] %>
 <table>
     <tr>
         <th>Menu Item Id</th>
@@ -40,6 +45,7 @@
         <th>Subtotal</th>
     <tr>
     <% @offlineData.keys.each do |key| %>
+        <% data.push([@offlineData[key]['name'].to_s+"("+key.to_s+")",@onlineData[key]['subtotal']])%>
         <tr>
             <td><%= key %></td>
             <td><%= @offlineData[key]['name'] %></td>
@@ -50,3 +56,5 @@
     <% end %>
 </table>
 <h2>Total amount through offline sales(inclusive of taxes):<%= onlineTotal*1.05 %></h2>
+<h2>Contribution to the total revenue by each menu item in offline sales</h2>
+<%= pie_chart data, donut: true, messages: {empty: "No data"}  %>

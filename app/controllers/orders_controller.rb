@@ -4,8 +4,9 @@ class OrdersController < ApplicationController
 
   def index
     if check_owner
-      from = Date.parse session[:from_date].dup
-      to = Date.parse session[:to_date].dup
+      ensure_owner_logged_in
+      from = Date.parse session[:from_date].dup.to_s
+      to = Date.parse session[:to_date].dup.to_s
       @onlineData = {}
       @offlineData = {}
       onlineOrderIds = Order.where("date >= ? and date <= ?", from, to).where("status= ? ", "Delivered").select(:id)

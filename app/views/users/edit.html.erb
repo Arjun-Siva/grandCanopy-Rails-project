@@ -1,0 +1,13 @@
+<br><br><br><br><br><br><br><br><br><br><br>
+<h1>Edit account details:</h1>
+<%= form_with(url: "/users/#{@user.id.to_i}", method: "put") do %>
+        <label for="first_name">First name:</label>
+        <%= text_field_tag 'first_name',nil,placeholder:"First name",:required => true,value:@user.first_name,class:'itemName_field' %>
+        <label for="last_name">Last name:</label>
+        <%= text_field_tag 'last_name',nil,placeholder:"Last name",value: (@user.last_name != nil ? @user.last_name : ""),class:'itemName_field' %>
+        <label for="email">Email id:</label>
+        <%= email_field_tag 'email',nil,placeholder:"Email",:required => true,value: @user.email, class:"email-field" %>
+        <label for="address">Address:</label>
+        <%= text_field_tag 'address',nil,placeholder:"Address",:required => true,value:@user.address,class:'description_field' %>
+        <%= button_tag 'Update',type:'submit'%>
+<% end %>

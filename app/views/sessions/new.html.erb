@@ -7,7 +7,7 @@
       </p>
     <% end %>
     <div id="signin" class="LoginPage-credentials">
-      <%= form_with url:sessions_path do |form| %>
+      <%= form_with url:session_path do |form| %>
         <p class="FormInput-label">Mobile:</p>
         <%= form.text_field :mobile, class:"Form-input", autofocus: "autofocus" %>
         <p class="FormInput-label">Password:</p>
