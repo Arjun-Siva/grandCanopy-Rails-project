@@ -8,21 +8,39 @@ class UsersController < ApplicationController
   end
 
   def create
-    new_user = User.new(
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      mobile: params[:mobile],
-      email: params[:email],
-      address: params[:address],
-      password: params[:password],
-      password_confirmation: params[:password_confirmation],
-      type_of_user: "Customer",
-    )
-    if new_user.save
-      session[:current_user_id] = new_user.id
-      redirect_to "/"
+    if current_user == nil
+      new_user = User.new(
+        first_name: params[:first_name],
+        last_name: params[:last_name],
+        mobile: params[:mobile],
+        email: params[:email],
+        address: params[:address],
+        password: params[:password],
+        password_confirmation: params[:password_confirmation],
+        type_of_user: "Customer",
+      )
+      if new_user.save
+        session[:current_user_id] = new_user.id
+        redirect_to "/"
+      else
+        redirect_to new_user_path, alert: new_user.errors.full_messages.join(", ")
+      end
     else
-      redirect_to new_user_path, alert: new_user.errors.full_messages.join(", ")
+      new_clerk = User.new(
+        first_name: params[:first_name],
+        last_name: "",
+        mobile: params[:mobile],
+        email: params[:email],
+        address: "The Grand Canopy, Thanjavur",
+        password: params[:password],
+        password_confirmation: params[:password_confirmation],
+        type_of_user: "Clerk",
+      )
+      if new_user.save
+        redirect_to users_path
+      else
+        redirect_to new_user_path, alert: new_user.errors.full_messages.join(", ")
+      end
     end
   end
 
