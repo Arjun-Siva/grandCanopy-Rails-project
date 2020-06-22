@@ -58,3 +58,6 @@
 <h2>Total amount through offline sales(inclusive of taxes):<%= onlineTotal*1.05 %></h2>
 <h2>Contribution to the total revenue by each menu item in offline sales</h2>
 <%= pie_chart data, donut: true, messages: {empty: "No data"}  %>
+<h1>Orders per day</h1>
+<%= line_chart Order.group_by_day(:created_at).count %>
+

@@ -30,8 +30,9 @@ class UsersController < ApplicationController
     @current_user = current_user
     if @current_user != nil and @current_user.type_of_user == "Customer"
       render "index"
-    else
-      redirect_to new_session_path
+    elsif @current_user.type_of_user == "Owner"
+      @clerks = User.where("type_of_user = ?", "Clerk")
+      render "ownerIndex"
     end
   end
 
