@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       type_of_user: "Customer",
     )
     if new_user.save
-      session[:current_user_id] = user.id
+      session[:current_user_id] = new_user.id
       redirect_to "/"
     else
       redirect_to new_user_path, alert: new_user.errors.full_messages.join(", ")
