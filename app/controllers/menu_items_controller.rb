@@ -77,19 +77,19 @@ class MenuItemsController < ApplicationController
   def plusOne
     id = (params[:id]).to_i
     item = session[:cart].select { |i| i["id"].to_i == id }
-    item[0]["quantity"] = item[0]["quantity"].to_i + 1
+    if item[0]["quantity"].to_i <= 10
+      item[0]["quantity"] = item[0]["quantity"].to_i + 1
+    end
     redirect_to menu_items_path
   end
 
   def minusOne
     id = (params[:id]).to_i
     item = session[:cart].select { |i| i["id"].to_i == id }
-    if item[0]["quantity"].to_i == 1
-      redirect_to menu_items_path
-    else
+    if item[0]["quantity"].to_i > 1
       item[0]["quantity"] = item[0]["quantity"].to_i - 1
-      redirect_to menu_items_path
     end
+    redirect_to menu_items_path
   end
 
   def destroy

@@ -16,3 +16,15 @@
 </table>
 <h2>Total(inclusive of delivery charges and taxes):<%= 25+(subtotal*1.05) %></h2>
 <%= link_to "Go back to orders", orders_path %>
+
+<h1>We'd love to hear from you!</h1>
+<h2>Please rate your food</h2>
+<%= form_with(url: "/comment/#{@order_items[0].order_id}", method: 'post') do%>
+    <%= label_tag(:rating, "Rate your order") %>
+    <div class="slidecontainer">
+        <input type="range" min="1" max="5" value="2" class="slider" id="myRange">
+    </div>
+    <%= label_tag(:comment, "Comment your food") %>
+    <%= text_area_tag(:comment, size: "40x100") %>
+    <>
+<% end %>
