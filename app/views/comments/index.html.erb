@@ -1,0 +1,6 @@
+<% @comments.each do |comment| %>
+    <h1>Order_id :<%= comment.order_id %>, Rating: <%= comment.rating%></h1>
+    <p>Comment: <%=comment.comment%> </p>
+    <%= button_to "View order", "/orders/#{comment.order_id}", class: "CartRedirect",method:"get" %>
+    <hr>
+<% end %>  
