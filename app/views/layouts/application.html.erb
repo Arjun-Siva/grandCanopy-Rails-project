@@ -13,6 +13,9 @@
       <%= link_to "/" do %>
         <% image_tag "logo-full.png", class: "Navbar-logo", id: "navbar-logo"%>
       <% end %>
+      <%= link_to "/" do %>
+        <% image_tag "logo-small.png", class: "Navbar-logosmall", id: "navbar-logo"%>
+      <% end %>
       <div class="Navbar-container">
         <% if @current_user %>
           <p class="AppHeader-title">Hello - <%= @current_user.first_name %>!</p>
@@ -44,9 +47,6 @@
       </div>
     </div>
     <%= yield %>
-    <div class="Footer">
-      <p>All rights reserved ©</p>
-    </div>
   </body>
   <script>
     function myFunction() {

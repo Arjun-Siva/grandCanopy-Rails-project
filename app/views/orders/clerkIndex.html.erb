@@ -2,18 +2,18 @@
 <h1>Orders information</h1>
 <h2>Orders placed:</h2>
 <%= render partial: "order-template", locals:{
-    orders_info: @orders_info.select{|order| order.status=='Order placed'},
+    orders_info: @orders_info.select{|order| order.status=="Order placed"},
     order_items_info: @order_items_info,
     button_message: "Mark as 'Out for delivery'"} %>
 <hr>
 <h2>Orders out for delivery</h2>
 <%= render partial: "order-template", locals:{
-    orders_info: @orders_info.select{|order| order.status=='Out for delivery'},
+    orders_info: @orders_info.select{|order| order.status=="Out for delivery"},
     order_items_info: @order_items_info,
     button_message: "Mark as 'Delivered'"} %>
 <hr>
 <h2>Orders delivered</h2>
 <%= render partial: "order-template", locals:{
-    orders_info: @orders_info.select{|order| order.status=='Delivered'},
+    orders_info: @orders_info.select{|order| order.status=="Delivered"},
     order_items_info: @order_items_info,
     button_message: nil} %>

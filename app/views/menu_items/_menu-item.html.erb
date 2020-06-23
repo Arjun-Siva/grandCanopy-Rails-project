@@ -1,7 +1,9 @@
 <div class="MenuPage-items">
   <% items.each do |item| %>
     <div class="MenuItem">
-      <img src=<%= item.image %> class="MenuItem-image">
+      <div>
+        <img src=<%= item.image %> class="MenuItem-image">
+      </div>
       <div class="MenuItem-content">
         <p class="MenuItem-name"><%= item.name %></p>
         <p class="MenuItem-price">Price: <%= item.price %></p>

@@ -1,11 +1,20 @@
-<h1>My orders</h1>
-<% @myOrders.each do |order| %>
-<div>
-<h3>Order number:<%= order.id %> </h3>
-<p>Ordered at:<%= order.date.strftime("%d of %B, %Y") %>, <%= order.date.strftime("%I:%M %p")%> </p>
-<p>Delivered to:<%= order.address %> </p>
-<h3>Order Status:<%= order.status %> </h3>
-</div>
-<%= button_to "View order summary", "/orders/#{order.id}",class:'EditMenuItem-button', method:"get" %>
-<hr>
-<% end %>
+<main class="OrdersPageMain">
+  <p class="OrdersPage-title">My orders</p>
+  <div class="OrdersPage">
+    <% @myOrders.each do |order| %>
+      <div class="OrdersPage-order">
+        <p class="Order-id">Order number: <%= order.id %> </>
+        <p class="Order-detail">Ordered at: <%= order.date.strftime("%d of %B, %Y") %>, <%= order.date.strftime("%I:%M %p")%> </p>
+        <p class="Order-detail">Delivered to: <%= order.address %> </p>
+        <% if order.status=="Order placed" %>
+          <p class="Order-detail" style="color: #d80000">Order Status: <%= order.status %></p>
+        <% elsif order.status=="Out for delivery" %>
+          <p class="Order-detail" style="color: #ff7300">Order Status: <%= order.status %></p>
+        <% else order.status=="Delivered" %>
+          <p class="Order-detail" style="color: #08eb00">Order Status: <%= order.status %></p>
+        <% end %>
+        <%= button_to "View order summary", "/orders/#{order.id}",class:"Order-button", method:"get" %>
+      </div>
+    <% end%>
+  </div>
+</main>

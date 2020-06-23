@@ -1,13 +1,17 @@
-<h1>Create new offer:</h1>
-<p>Menu id: <%= @menu_item.id %></p>
-<p>Menu item name: <%= @menu_item.name %></p>
-<p>Original price: <%= @menu_item.price %></p>
-<%= form_with(url: "/offers/#{@menu_item.id}", method: "create") do %>
-        <label for="offer_price">Offer price:</label>
-        <%= number_field_tag 'offer_price',nil,placeholder:"Offer-price",:required => true,class:'offprice_field' %>
-        <label for="from_date">From-date:</label>
-        <%= date_field_tag 'from_date',nil,placeholder:"From-date",:required => true,class:'fromDate_field' %>
-        <label for="to_date">To-date:</label>
-        <%= date_field_tag 'to_date',nil,placeholder:"To-date",:required => true,class:'toDate_field' %>
-        <%= button_tag 'Create',type:'submit'%>
-<% end %>
+<main class="MenuPageMain" style="background-size: cover; height: 100%;">
+  <div class="MenuPage">
+    <h1>Create new offer:</h1>
+    <p>Menu id: <%= @menu_item.id %></p>
+    <p>Menu item name: <%= @menu_item.name %></p>
+    <p>Original price: <%= @menu_item.price %></p>
+    <%= form_with(url: "/offers/#{@menu_item.id}", method: "create") do %>
+      <label for="offer_price">Offer price:</label>
+      <%= number_field_tag 'offer_price',nil,placeholder:"Offer-price",:required => true,class:'offprice_field' %>
+      <label for="from_date">From-date:</label>
+      <%= date_field_tag 'from_date',nil,placeholder:"From-date",:required => true,class:'fromDate_field' %>
+      <label for="to_date">To-date:</label>
+      <%= date_field_tag 'to_date',nil,placeholder:"To-date",:required => true,class:'toDate_field' %>
+      <%= button_tag 'Create',type:'submit'%>
+    <% end %>
+  </div>
+</main>

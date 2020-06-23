@@ -1,0 +1,61 @@
+.OrdersPageMain {
+    background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/10/Justice-in-funding-mission-pre-conference-registra.jpg);
+    background-size: contain;
+    overflow: auto;
+}
+
+.OrdersPage {
+    margin: 0 auto;
+    max-width: 1800px;
+}
+
+.OrdersPage-title {
+    color: #ffffff;
+    font-size: 48px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 50px;
+    padding-top: 150px;
+}
+
+.OrdersPage-order {
+    float: left;
+    margin: 20px 50px;
+    height: 300px;
+    width: 500px;
+    background-color: rgba($color: #ffffff, $alpha: 0.5);
+    text-align: center;
+    transition: 0.5s;
+}
+
+.OrdersPage-order:hover {
+    box-shadow: rgba($color: #ffffff, $alpha: 0.5);
+    transform: scale(1.1);
+}
+
+.Order-id {
+    font-size: 38px;
+    font-weight: 600;
+    margin: 20px;
+}
+
+.Order-detail {
+    font-size: 26px;
+    margin: 20px;
+    text-align: left;
+}
+
+.Order-button {
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 30px;
+    color: rgba($color: #000000, $alpha: 0.75);
+    transition: 0.5s;
+}
+
+.Order-button:hover {
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    font-size: 32px;
+    color: rgba($color: #ffffff, $alpha: 0.9);
+}

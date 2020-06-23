@@ -34,6 +34,6 @@
 <div style="display: flex; align-items: center; justify-content: space-between;">
   <p class="CartTotal">Subtotal: <%= subtotal %></p>
   <% if current_cart.length > 0 %>
-    <%= button_to "Proceed to checkout", order_items_path, class: "CartRedirect" %>
+    <%= button_to "Proceed to checkout", order_items_path, method: "get", class: "CartRedirect" %>
   <% end %>
 </div>

@@ -28,14 +28,14 @@
     </div>
     <div class="MenuPage-menu">
       <% @menus.each do |menu| %>
-        <h2>Menu id: <%=menu.id %>, Menu name: <%= menu.name %></h2>
+        <h2>Menu id: <%=menu.id %> Menu name: <%= menu.name %></h2>
         <% items = @menu_items.select{|item| item.menu_id == menu.id } %>
         <div class="MenuPage-items">
           <% items.each do |currentItem| %>
-            <div class="MenuItem" style="height: 390px">
+            <div class="MenuItem">
               <img src=<%= currentItem.image %> class="MenuItem-image" >
               <div class="MenuItem-content">
-                <p class="MenuItem-name"><strong>Id:<%= currentItem.id %>, Name:<%= currentItem.name %></strong></p>
+                <p class="MenuItem-name"><strong>Id:<%= currentItem.id %> Name:<%= currentItem.name %></strong></p>
                 <p class="MenuItem-price">Price:<%= currentItem.price %>  <%= (Offer.where("menu_item_id = ?", currentItem.id)).empty? ? "": "(Under offer)" %></p>
                 <p class="MenuItem-price">Category:<%= currentItem.category %></p>
                 <p class="MenuItem-desc">Description:<%= currentItem.description %></p>
