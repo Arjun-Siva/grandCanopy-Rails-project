@@ -56,6 +56,10 @@ body {
     transition: 0.5s;
 }
 
+.Navbar-link:hover {
+    color: #dcac24;
+}
+
 .Navbar-dlink {
     display: block;
     color: #f2f2f2;
@@ -182,91 +186,6 @@ body {
     }
 }
 
-
-/*.Navbar {
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100px;
-    z-index: 99;
-    margin: 0;
-    background-color: rgba($color: #000000, $alpha: 0.7);
-}
-
-.icon {
-    display: none;
-}
-
-.Navbar-dropdown {
-    width: 200px;
-    height: 100px;
-    position: relative;
-    display: block;
-    align-items: center;
-}
-
-.Navbar-dropdownContent {
-    display: none;
-    width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(256, 256, 256, 0.1);
-    z-index: 99;
-    font-size: 26px;
-    position: fixed;
-    top: 100px;
-    left: 0;
-    background-color: rgba($color: #000000, $alpha: 0.7);
-}
-
-.Navbar-dropdown:hover .Navbar-dropdownContent {
-    display: block;
-}
-
-.Navbar-logo {
-    height: 100px;
-}
-
-.Navbar-icon {
-    height: 40px;
-    margin: 30px;
-    margin-left: 15px;
-    float: left;
-}
-
-.Navbar-content {
-    color: #ffffff;
-    align-items: center;
-    font-size: 26px;
-    font-weight: 600;
-    display: flex;
-    text-align: center;
-    text-decoration: none;
-}
-
-.Navbar-loginLink {
-    color: #ffffff;
-    text-decoration: none;
-    padding: 2px 2px;
-    margin: 10px;
-}
-
-.AppHeader-title {
-    padding: 2px 2px;
-    margin: 10px;
-}
-
-.AppHeader-signout {
-    color: #ffffff;
-    text-decoration: none;
-    padding: 2px 2px;
-    margin: 10px;
-}*/
-
-.Footer {
-    position: fixed;
-    bottom: 0;
-}
-
 .BreakLine {
     width: 100%;
     border: 0.5px solid #dadce0;
@@ -292,11 +211,14 @@ body {
     width: 50px;
 }
 
-@keyframes animatezoom {
-    from {
-        transform: scale(0)
-    }
-    to {
-        transform: scale(1)
-    }
+.Footer {
+    color: #ffffff;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    font-size: 32px;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    background-color: rgba($color: #000000, $alpha: 0.7);
 }

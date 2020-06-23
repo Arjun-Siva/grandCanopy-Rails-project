@@ -1,23 +1,134 @@
 .MenuPageMain {
     width: 100%;
-    margin: 0 auto;
     color: white;
     background-image: url(https://jooinn.com/images/dark-pattern-4.jpg);
-    background-size: cover;
+    background-size: contain;
 }
 
 .MenuPage {
-    padding-top: 150px;
-    display: flex;
-    justify-content: space-between;
+    padding: 150px 0px;
 }
 
 .MenuPage-menu {
     display: block;
+    max-width: 1400px;
+    text-align: center;
+}
+
+.MenuPage-category {
+    font-size: 32px;
 }
 
 .MenuPage-items {
-    display: flex;
+    display: flow-root;
+}
+
+.MenuItem {
+    float: left;
+    margin: 30px;
+    width: 270px;
+    height: 350px;
+    border: 2px solid rgba($color: #351010, $alpha: 0.9);
+    border-radius: 12px;
+    background-color: rgba($color: #dadce0, $alpha: 0.5);
+    text-align: left;
+    transition: 0.5s;
+}
+
+.MenuItem:hover {
+    .MenuItem-image {
+        height: 220px;
+    }
+    .MenuItem-content {
+        height: 100px;
+    }
+    .MenuItem-desc {
+        display: block;
+    }
+    .MenuItem-quantity {
+        display: flex;
+    }
+    .MenuItem-update {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.MenuItem-image {
+    width: 270px;
+    height: 270px;
+    border-radius: 12px 12px 0px 0px;
+    transition: 0.1s;
+}
+
+.MenuItem-content {
+    height: 70px;
+    font-size: 20px;
+}
+
+.MenuItem-name {
+    margin: 5px;
+    font-weight: 600;
+    width: 270px;
+    text-align: center;
+}
+
+.MenuItem-price {
+    margin: 5px;
+}
+
+.MenuItem-desc {
+    margin: 5px;
+    display: none;
+}
+
+.MenuItem-quantity {
+    display: none;
+    margin: 5px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.MenuItem-update {
+    display: none;
+}
+
+.MenuItem-quantityBox {
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    background-color: rgba($color: #dcac24, $alpha: 0.7);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-left: 5px;
+    padding: 3px;
+}
+
+.MenuItem-add {
+    margin-right: 5px;
+    color: #ffffff;
+    display: block;
+    float: right;
+    font-size: 18px;
+    height: 30px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: rgba($color: #dcac24, $alpha: 0.7);
+}
+
+.AddMenuItem {
+    position: fixed;
+    top: 150px;
+    right: 0;
+    overflow: auto;
+    max-width: 500px;
+    background-color: rgba($color: #dadce0, $alpha: 0.3);
+    padding: 0 25px;
+    margin: 20px;
+    border-radius: 4px;
 }
 
 .MenuPage-cart {
@@ -28,11 +139,12 @@
     max-width: 500px;
     background-color: rgba($color: #dadce0, $alpha: 0.3);
     padding: 0 25px;
-    border-left: 2px solid whitesmoke;
+    margin: 20px;
+    border-radius: 4px;
 }
 
 .MenuPage-cartTitle {
-    font-size: 42px;
+    font-size: 40px;
     text-align: center;
     margin: 10px;
 }
@@ -41,20 +153,26 @@
     height: 28px;
 }
 
-.MenuItem {
-    margin: 25px;
-    width: 250px;
-    border: 2px solid #351010;
-    border-radius: 8px;
-    background-color: #dadce0;
+.Form-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    height: 14px;
+    margin: 0px;
+    margin-left: 15px;
 }
 
-.MenuItem:hover {
-    box-shadow: 0 0 20px rgb(255, 255, 255);
+.FormSubmit {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #dcac24;
+    height: 35px;
+    padding: 2px 2px;
+    font-size: 16px;
+    width: 80px;
 }
 
-.MenuItem-image {
-    width: 250px;
-    height: 250px;
-    border-radius: 8px;
+.MenuPage-redirect {
+    display: flex;
 }

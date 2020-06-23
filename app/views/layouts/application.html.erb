@@ -11,7 +11,7 @@
   <body>
     <div class="Navbar" id="navbar">
       <%= link_to "/" do %>
-        <% image_tag "logo1noBG.png", class: "Navbar-logo", id: "navbar-logo"%>
+        <% image_tag "logo-full.png", class: "Navbar-logo", id: "navbar-logo"%>
       <% end %>
       <div class="Navbar-container">
         <% if @current_user %>
@@ -23,9 +23,7 @@
           <%= link_to "Sign in", new_session_path, class: "Navbar-link" %>
           <%= link_to "Sign up", new_user_path, class: "Navbar-link" %>
         <% end %>
-        <%= link_to menu_items_path do %>
-          <% image_tag "food.svg", class: "Navbar-icon" %>
-        <% end %>
+        <%= link_to "Menu", menu_items_path, class: "Navbar-link" %>
         <%= link_to order_items_path do %>
           <% image_tag "cart.svg", class: "Navbar-icon" %>
         <% end %>
@@ -47,7 +45,7 @@
     </div>
     <%= yield %>
     <div class="Footer">
-      <p>All rights reserved</p>
+      <p>All rights reserved ©</p>
     </div>
   </body>
   <script>

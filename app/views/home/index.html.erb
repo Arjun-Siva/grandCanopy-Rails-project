@@ -11,35 +11,55 @@
       </form>
     </div>
   </div>
-  <div class="HomePage-offers">
-    <h1 id="offerHead">Offers</h1>
-    <% @offers.each do |offer| %>
-      <% item = MenuItem.find(offer.menu_item_id) %>
-      <div class='MenuItem'>
-        <img src=<%= item.image %> class="MenuItem-image" >
-        <h3><%= item.name %></h3>
-        <h4>Offer Price:<%= offer.offer_price %> <span class="oldPrice"><%= offer.original_price %></span></h4>
-        <p>Description:<%= item.description%></p>
-        <%= form_with(url: "/menu_items/#{item.id}", method:"put") do %>
-          <label for="quantity">Quantity:</label>
-          <%= number_field_tag 'quantity',nil,min: 1,:required => true,class: 'quantity_field'%>
-          <%= button_tag 'Add to cart',type:'submit'%>
+  <div class="HomePage-container" id="offerHead">
+    <div class="HomePage-offers">
+      <p class="HomePage-offersTitle">Offers</p>
+      <div class="MenuPage-items">
+        <% @offers.each do |offer| %>
+          <% item = MenuItem.find(offer.menu_item_id) %>
+          <div class="MenuItem">
+            <img src=<%= item.image %> class="MenuItem-image">
+            <div class="MenuItem-content">
+              <p class="MenuItem-name"><%= item.name %></p>
+              <p class="MenuItem-price">Offer Price: <span class="oldPrice"><%= offer.original_price %></span><%= offer.offer_price %></p>
+              <p class="MenuItem-desc">Description: <%= item.description%></p>
+              <%= form_with(url: "/menu_items/#{item.id}", method:"put") do %>
+                <div class="MenuItem-quantity">
+                  <div>
+                    <label for="quantity">Quantity: </label>
+                    <%= number_field_tag "quantity", nil, min: 1, max: 10, :required => true, class: "MenuItem-quantityBox", style: "color: #000000" %>
+                  </div>
+                  <%= button_tag "Add", type:"submit", class: "MenuItem-add", style: "color: #000000" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>
-    <% end %>
-    <h1>Best sellers</h1>
-    <% @top3.each do |item| %>
-      <div class='MenuItem'>
-        <img src=<%= item.image %> class="MenuItem-image" >
-        <h3><%= item.name %></h3>
-        <h4>Price:<%= item.price %></h4>
-        <p>Description:<%= item.description%></p>
-        <%= form_with(url: "/menu_items/#{item.id}", method:"put") do %>
-          <label for="quantity">Quantity:</label>
-          <%= number_field_tag 'quantity',nil,min: 1,:required => true,class: 'quantity_field'%>
-          <%= button_tag 'Add to cart',type:'submit'%>
+    <div class="HomePage-offers">
+      <p class="HomePage-offersTitle">Best sellers</p>
+      <div class="MenuPage-items">
+        <% @top3.each do |item| %>
+          <div class="MenuItem">
+            <img src=<%= item.image %> class="MenuItem-image">
+            <div class="MenuItem-content">
+              <p class="MenuItem-name"><%= item.name %></p>
+              <p class="MenuItem-price">Price: <%= item.price %></p>
+              <p class="MenuItem-desc">Description: <%= item.description%></p>
+              <%= form_with(url: "/menu_items/#{item.id}", method:"put") do %>
+                <div class="MenuItem-quantity">
+                  <div>
+                    <label for="quantity">Quantity: </label>
+                    <%= number_field_tag "quantity", nil, min: 1, max: 10, :required => true, class: "MenuItem-quantityBox", style: "color: #000000" %>
+                  </div>
+                  <%= button_tag "Add", type:"submit", class: "MenuItem-add", style: "color: #000000" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
         <% end %>
       </div>
-    <% end %>
-  </main>
+    </div>
+  </div>
+</main>

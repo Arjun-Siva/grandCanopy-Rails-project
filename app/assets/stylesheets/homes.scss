@@ -4,15 +4,28 @@
 
 .HomePage-welcome {
     background-image: url(https://www.gourmetshishkebab.com/wp-content/uploads/2020/05/a-scaled.jpg);
-    background-repeat: no-repeat;
-    background-size: auto;
     height: 100%;
     width: 100%;
+    padding-top: 150px;
+}
+
+.HomePage-container {
+    background-image: url(https://files.123freevectors.com/wp-content/original/122759-orange-and-yellow-grunge-watercolour-background-image.jpg);
+    background-color: rgba($color: #dcac24, $alpha: 1.0);
+    padding-bottom: 50px;
+    padding-top: 115px;
 }
 
 .HomePage-offers {
-    background-color: #dadce0;
-    display: flex;
+    margin-bottom: 50px;
+}
+
+.HomePage-offersTitle {
+    font-size: 40px;
+    font-weight: 600;
+    padding: 7px;
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 .HomePage-title {
@@ -22,10 +35,6 @@
     padding-left: 50px;
     padding-top: 50px;
     transition: 0.5s;
-}
-
-.HomePage-title:first-of-type {
-    padding-top: 120px;
 }
 
 .HomePage-navigate {
@@ -57,6 +66,7 @@
 
 .oldPrice {
     text-decoration: line-through;
+    margin-right: 5px;
 }
 
 @media screen and (max-width: 1200px) {
