@@ -3,7 +3,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Price per unit</th>
+      <th>Price / unit</th>
       <th>Quantity</th>
       <th>Delete</th>
     </tr>
@@ -13,18 +13,16 @@
       <% if item["id"]!=nil %>
         <% cart_item = MenuItem.find(item["id"].to_i) %>
         <tr>
-          <td><%= cart_item.name %></td>
+          <td style="text-align: left;"><%= cart_item.name %></td>
           <td><%= cart_item.price %></td>
-          <td>
-          <div style="display: flex;">
-            <%= button_to "+", update_plusOne_path(cart_item.id),class:'plusOne-button', method:"put" %>
-            <%= item["quantity"] %>
-            <%= button_to "-", update_minusOne_path(cart_item.id),class:'minusOne-button', method:"put" %>
-            </div>
+          <td class="CartTable-quality">
+            <%= button_to "—", update_minusOne_path(cart_item.id),class:"QuantityButton", method:"put" %>
+            <p style="margin-left: 5px;"><%= item["quantity"] %></p>
+            <%= button_to "+", update_plusOne_path(cart_item.id),class:"QuantityButton", method:"put" %>
           </td>
-          <td class="CartTable-delete">
+          <td>
             <%= form_with(url: "/menu_items/#{cart_item.id}",method: "delete") do %>
-              <%= image_submit_tag "bin.svg", class: "CartItem-delete" %>
+              <%= image_submit_tag "bin.svg", class: "CartTable-delete" %>
             <% end %>
           </td>
         </tr>
@@ -34,9 +32,15 @@
   </tbody>
 </table>
 <div style="display: flex; align-items: center; justify-content: space-between;">
+<<<<<<< HEAD
 <p class="CartTotal">Subtotal: <%= subtotal %></p>
 <% if current_cart.length > 0 %>
   <%= button_to "Proceed to checkout", order_items_path, class: "CartRedirect",method:"get" %>
 <% end %>
+=======
+  <p class="CartTotal">Subtotal: <%= subtotal %></p>
+  <% if current_cart.length > 0 %>
+    <%= button_to "Proceed to checkout", order_items_path, class: "CartRedirect" %>
+  <% end %>
+>>>>>>> e00560d88a665e21aa5891ac1336590aed53c06f
 </div>
-<hr>

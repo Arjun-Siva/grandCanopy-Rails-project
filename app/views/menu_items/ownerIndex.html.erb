@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <br><br><br><br><br><br><br>
 <main class="MenuPageMain">
   <%= link_to "Select default Menu", "/menus" %>
@@ -30,9 +31,60 @@
       <%= button_to "Edit", edit_menu_item_path(currentItem.id),class:'EditMenuItem-button', method:"get" %>
       <%= form_with(url: "/menu_items/#{currentItem.id}", method: "delete") do %>
         <%= button_tag 'Delete',type:'submit', class:'DeleteMenuItem-button'%>
+=======
+<main class="MenuPageMain" style="background-size: cover; background-repeat: repeat-y;">
+  <div class="MenuPage">
+    <div class="MenuPage-redirect">
+      <%= link_to "Select default Menu", "/menus", class: "Navbar-link" %>
+      <%= link_to "Sales reports", "/orders", class: "Navbar-link" %>
+    </div>
+    <div class="MenuPage-cart">
+      <p class="MenuPage-cartTitle">Add Item</p>
+      <div class="LoginPage-credentials">
+        <%= form_with(url: "/menu_items", method: "post") do %>
+          <label for="name" class="Form-label">Menu item name:</label>
+          <%= text_field_tag 'name',nil,placeholder:"Name",:required => true, class:"Form-input" %>
+          <label for="category" class="Form-label">Category:</label>
+          <%= text_field_tag 'category',nil,placeholder:"Category",:required => true, class:"Form-input" %>
+          <label for="description" class="Form-label">Description of item:</label>
+          <%= text_field_tag 'description',nil,placeholder:"Description",:required => true, class:"Form-input" %>
+          <label for="price" class="Form-label">Price:</label>
+          <%= number_field_tag 'price',nil,min: 1,:required => true, class:"Form-input"%>
+          <label for="image" class="Form-label">Image URL:</label>
+          <%= text_field_tag 'image',nil,placeholder:"Image URL",:required => true, class:"Form-input" %>
+          <label for="menu_id" class="Form-label">Menu ID:</label>
+          <%= number_field_tag 'menu_id',nil,:required => true, class:"Form-input"%>
+          <div style="text-align: center; margin-top: 30px;">
+            <%= button_tag 'Create',type:'submit', class: "FormSubmit"%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="MenuPage-menu">
+      <% @menus.each do |menu| %>
+        <h2>Menu id: <%=menu.id %>, Menu name: <%= menu.name %></h2>
+        <% items = @menu_items.select{|item| item.menu_id == menu.id } %>
+        <div class="MenuPage-items">
+          <% items.each do |currentItem| %>
+            <div class="MenuItem" style="height: 390px">
+              <img src=<%= currentItem.image %> class="MenuItem-image" >
+              <div class="MenuItem-content">
+                <p class="MenuItem-name"><strong>Id:<%= currentItem.id %>, Name:<%= currentItem.name %></strong></p>
+                <p class="MenuItem-price">Price:<%= currentItem.price %>  <%= (Offer.where("menu_item_id = ?", currentItem.id)).empty? ? "": "(Under offer)" %></p>
+                <p class="MenuItem-price">Category:<%= currentItem.category %></p>
+                <p class="MenuItem-desc">Description:<%= currentItem.description %></p>
+                <div class="MenuItem-update">
+                  <%= button_to "Edit", edit_menu_item_path(currentItem.id), class: "MenuItem-add", method:"get" %>
+                  <%= form_with(url: "/menu_items/#{currentItem.id}", method: "delete") do %>
+                    <%= button_tag 'Delete',type:'submit', class: "MenuItem-add" %>
+                  <% end %>
+                  <%= button_to "Create offer", "/offers/new/#{currentItem.id}", class: "MenuItem-add", method:"get" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+>>>>>>> e00560d88a665e21aa5891ac1336590aed53c06f
       <% end %>
-      <%= button_to "Create offer", "/offers/new/#{currentItem.id}",class:'createOffer-button', method:"get" %>
-    <% end %>
-    <hr>
-  <% end %>
-</main>
+    </div>
+  </main>

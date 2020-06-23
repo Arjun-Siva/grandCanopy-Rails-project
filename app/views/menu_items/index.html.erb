@@ -1,17 +1,18 @@
 <main class="MenuPageMain">
   <div class="MenuPage">
     <% if !(@currentMenu.empty?) %>
-      <div>
-        <%categories= @currentMenu.select([:created_at,:category]).order(:created_at).map(&:category).uniq %>
-        <%categories.each do |category|%>
-          <h2><%= category %></h2>
-          <%= render partial: "menu-item", locals:{
-      items: @currentMenu.select{|item| item.category==category}} %>
+      <div class="MenuPage-menu">
+        <% categories= @currentMenu.select([:created_at,:category]).order(:created_at).map(&:category).uniq %>
+        <% categories.each do |category|%>
+          <div>
+            <p class="MenuPage-category"><%= category %></p>
+            <%= render partial: "menu-item", locals:{ items: @currentMenu.select{|item| item.category==category}} %>
+          </div>
         <%end%>
       </div>
       <div class="MenuPage-cart">
         <p class="MenuPage-cartTitle">Your cart</p>
-        <%= render partial: "user-cart",locals:{current_cart: @current_cart.dup }%>
+        <%= render partial: "user-cart",locals:{current_cart: @current_cart.dup} %>
       </div>
     <% end %>
   </div>

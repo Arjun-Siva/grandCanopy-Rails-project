@@ -1,6 +1,5 @@
 .CartTable {
     margin: 25px 0;
-    font-size: 1.5em;
     min-width: 400px;
     border-radius: 8px 8px 0 0;
     overflow: hidden;
@@ -10,9 +9,8 @@
 .CartTable thead tr {
     background-color: #351010;
     color: #ffffff;
-    text-align: left;
-    font-weight: bold;
-    opacity: 0.9;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .CartTable th,
@@ -21,39 +19,63 @@
 }
 
 .CartTable tbody tr {
-    font-weight: 600;
-    border-bottom: 1px solid #351010;
-}
-
-.CartTable tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
     color: #000000;
+    font-size: 20px;
+    border-bottom: 1px solid #351010;
+    background-color: rgba(256, 256, 256, 0.3);
+    text-align: center;
 }
 
 .CartTable tbody tr:last-of-type {
-    border-bottom: 3px solid #351010;
+    border-bottom: 2px solid #351010;
+}
+
+.CartTable-quality {
+    display: flex;
+    color: #000000;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 20px;
 }
 
 .CartTable-delete {
-    border-left: transparent;
+    height: 24px;
 }
 
 .CartTotal {
-    font-size: 26px;
-    margin: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 5px 5px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    transition: background-color 0.5s;
+}
+
+.CartTotal:hover {
+    background-color: #351010;
 }
 
 .CartRedirect {
-    background-color: #f3f3f3;
+    background-color: transparent;
     color: #351010;
     border: 1px solid transparent;
     border-radius: 6px;
-    font-size: 26px;
-    padding: 2px;
-
+    font-size: 20px;
+    font-weight: 600;
+    padding: 5px 5px;
+    margin-bottom: 10px;
 }
 
 .CartRedirect:hover {
-    background-color: #351010;
+    background-color: rgba(35, 10, 10, 0.9);
     color: #f3f3f3;
+    transition: background-color 0.5s;
+}
+
+.QuantityButton {
+    font-size: 26px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 2px 2px;
+    width: 18px;
 }
