@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   get "/offers/new/:id" => "offers#new"
   post "/offers/:id" => "offers#create"
   resources :offers
+  post "/comments/:id" => "comments#create"
+  resources :comments
   get "/signin" => "sessions#new", as: :new_session
   post "/signin" => "sessions#create", as: :session
   delete "/signout" => "sessions#destroy", as: :destroy_session
+  get "/:else" => "home#else"
 end
