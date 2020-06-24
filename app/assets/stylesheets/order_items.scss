@@ -22,7 +22,6 @@
 }
 
 .Cart-confirm {
-    background-color: transparent;
     color: #ffffff;
     border: 1px solid transparent;
     border-radius: 6px;
@@ -30,6 +29,7 @@
     font-weight: 600;
     padding: 5px 5px;
     margin-top: 30px;
+    background-color: rgba($color: #ffffff, $alpha: 0.2);
 }
 
 .Cart-confirm:hover {
@@ -39,7 +39,6 @@
 }
 
 .CartForm {
-    background-color: rgba($color: #ffffff, $alpha: 0.1);
     margin-bottom: 30px;
     text-align: center;
 }
