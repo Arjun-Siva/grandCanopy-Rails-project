@@ -16,7 +16,10 @@
 }
 
 .MenuPage-category {
+    font-family: 'Bree Serif';
+    letter-spacing: 2px;
     font-size: 32px;
+    padding-bottom: 30px;
 }
 
 .MenuPage-items {
@@ -77,12 +80,18 @@
 
 .MenuItem-name {
     margin: 5px;
+    font-size: 26px;
     font-weight: 600;
     width: 270px;
     text-align: center;
 }
 
 .MenuItem-price {
+    font-weight: 600;
+    margin: 5px;
+}
+
+.MenuItem-category {
     margin: 5px;
 }
 

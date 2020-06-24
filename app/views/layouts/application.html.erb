@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>The Grand Canopy</title>
+    <link rel="icon" href="/assets/logo-small.png" type="image/gif" sizes="16x16">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Berkshire+Swash&family=Bree+Serif&family=Caveat:wght@700&family=Courgette&family=Pacifico&family=Permanent+Marker&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -30,7 +32,7 @@
         <%= link_to order_items_path do %>
           <% image_tag "cart.svg", class: "Navbar-icon" %>
         <% end %>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <a href="javascript:void(0);" class="icon" onclick="hamburger()">
           <%= image_tag "hamburger.svg", class: "Navbar-icon", id: "hamburger" %>
         </a>
       </div>
@@ -52,7 +54,7 @@
     </div>
   </body>
   <script>
-    function myFunction() {
+    function hamburger() {
       var x = document.getElementById("navbar");
       if (x.className === "Navbar")
       {
@@ -61,6 +63,18 @@
       else {
         x.className = "Navbar";
       }
+    }
+    function viewoffer(){
+      document.getElementById("offers").style.display="block";
+      document.getElementById("bestsellers").style.display="none";
+      document.getElementById("bs").style.background="#dadce0";
+      document.getElementById("of").style.background="#ffffff";
+    }
+    function viewbestsellers(){
+      document.getElementById("bestsellers").style.display="block";
+      document.getElementById("offers").style.display="none";
+      document.getElementById("of").style.background="#dadce0";
+      document.getElementById("bs").style.background="#ffffff";
     }
   </script>
 </html>

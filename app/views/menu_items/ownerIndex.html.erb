@@ -3,6 +3,7 @@
     <div class="MenuPage-redirect">
       <%= link_to "Select default Menu", "/menus", class: "Navbar-link" %>
       <%= link_to "Sales reports", "/orders", class: "Navbar-link" %>
+      <%= link_to "Comments", "/comments", class: "Navbar-link" %>
     </div>
     <div class="MenuPage-cart">
       <p class="MenuPage-cartTitle">Add Item</p>
@@ -28,16 +29,16 @@
     </div>
     <div class="MenuPage-menu">
       <% @menus.each do |menu| %>
-        <h2>Menu id: <%=menu.id %> Menu name: <%= menu.name %></h2>
+        <p class="MenuPage-category">Menu id: <%=menu.id %> Menu name: <%= menu.name %></p>
         <% items = @menu_items.select{|item| item.menu_id == menu.id } %>
         <div class="MenuPage-items">
           <% items.each do |currentItem| %>
-            <div class="MenuItem">
+            <div class="MenuItem" style="height: 420px">
               <img src=<%= currentItem.image %> class="MenuItem-image" >
               <div class="MenuItem-content">
-                <p class="MenuItem-name"><strong>Id:<%= currentItem.id %> Name:<%= currentItem.name %></strong></p>
+                <p class="MenuItem-name" style="font-size: 22px"><strong>ID:<%= currentItem.id %> <%= currentItem.name %></strong></p>
                 <p class="MenuItem-price">Price:<%= currentItem.price %>  <%= (Offer.where("menu_item_id = ?", currentItem.id)).empty? ? "": "(Under offer)" %></p>
-                <p class="MenuItem-price">Category:<%= currentItem.category %></p>
+                <p class="MenuItem-category">Category:<%= currentItem.category %></p>
                 <p class="MenuItem-desc">Description:<%= currentItem.description %></p>
                 <div class="MenuItem-update">
                   <%= button_to "Edit", edit_menu_item_path(currentItem.id), class: "MenuItem-add", method:"get" %>

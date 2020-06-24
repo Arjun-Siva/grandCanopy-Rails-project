@@ -4,11 +4,10 @@
       <div class="MenuPage-menu">
         <% categories= @currentMenu.select([:created_at,:category]).order(:created_at).map(&:category).uniq %>
         <% categories.each do |category|%>
-          <div>
+          <div style="padding-top: 50px;">
             <p class="MenuPage-category"><%= category %></p>
             <%= render partial: "menu-item", locals:{ items: @currentMenu.select{|item| item.category==category}} %>
           </div>
-          <br><br>
         <%end%>
       </div>
       <div class="MenuPage-cart">

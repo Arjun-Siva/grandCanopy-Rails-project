@@ -4,6 +4,7 @@
 
 .HomePage-welcome {
     background-image: url(https://www.gourmetshishkebab.com/wp-content/uploads/2020/05/a-scaled.jpg);
+    background-size: auto;
     height: 100%;
     width: 100%;
     padding-top: 150px;
@@ -16,15 +17,40 @@
 }
 
 .HomePage-offers {
+    transition: 0.3s;
+    margin: 0px 30px;
     margin-bottom: 50px;
 }
 
+.Offers-container {
+    background-color: #ffffff;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.HomePage-offerHead {
+    display: flex;
+    height: min-content;
+    width: 100%;
+    justify-content: center;
+}
+
 .HomePage-offersTitle {
+    letter-spacing: 2px;
+    font-family: 'Bebas Neue';
+    color: #000000;
     font-size: 40px;
     font-weight: 600;
+    width: 250px;
     padding: 7px;
     text-align: center;
-    margin-bottom: 50px;
+    text-decoration: none;
+    background-color: #ffffff;
+    border: 1px solid #dadce0;
+    margin: 0 2px;
+    border-bottom: 0;
+    border-radius: 6px 6px 0 0;
 }
 
 .HomePage-title {
@@ -41,7 +67,7 @@
     display: flex;
     width: min-content;
     margin: 0 auto;
-    margin-top: 150px;
+    margin-top: 400px;
     transition: 0.5s;
 }
 
@@ -64,6 +90,7 @@
 }
 
 .oldPrice {
+    color: #ff0000;
     text-decoration: line-through;
     margin-right: 5px;
 }
@@ -89,23 +116,117 @@
     }
 }
 
-.missing {
+.Missing {
     height: 100%;
     width: 100%;
     background-color: #3d3838;
+    text-align: center;
 }
 
-.missing-logo {
-    padding-top: 10%;
-    padding-left: 40%;
+.Missing-logo {
+    padding-top: 200px;
 }
 
-.missing-text {
-    color: #fff;
-    padding-left: 41%;
-    font-size: large;
+.Missing-text {
+    color: #ffffff;
+    font-size: 18px;
 }
 
-a {
-    color: wheat;
+.Missing-link {
+    color: #ffffff;
+    font-size: 22px;
+}
+
+#bestsellers {
+    display: none;
+}
+
+#bs {
+    background: #dadce0;
+}
+
+.item-1,
+.item-2,
+.item-3 {
+    position: absolute;
+    top: 200px;
+    right: 100px;
+    width: 60%;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.item-1 {
+    animation-name: anim-1;
+}
+
+.item-2 {
+    animation-name: anim-2;
+}
+
+.item-3 {
+    animation-name: anim-3;
+}
+
+@keyframes anim-1 {
+    0%,
+    8.3% {
+        up: -100%;
+        left: 5%;
+        opacity: 0;
+    }
+    8.3%,
+    25% {
+        up: 5%;
+        left: 5%;
+        opacity: 1;
+    }
+    33.33%,
+    100% {
+        up: 110%;
+        left: 5%;
+        opacity: 0;
+    }
+}
+
+@keyframes anim-2 {
+    0%,
+    33.33% {
+        up: -100%;
+        left: 5%;
+        opacity: 0;
+    }
+    41.63%,
+    58.29% {
+        up: 5%;
+        left: 5%;
+        opacity: 1;
+    }
+    66.66%,
+    100% {
+        up: 110%;
+        left: 5%;
+        opacity: 0;
+    }
+}
+
+@keyframes anim-3 {
+    0%,
+    66.66% {
+        up: -100%;
+        left: 5%;
+        opacity: 0;
+    }
+    74.96%,
+    91.62% {
+        up: 5%;
+        left: 5%;
+        opacity: 1;
+    }
+    100% {
+        up: 110%;
+        left: 5%;
+        opacity: 0;
+    }
 }

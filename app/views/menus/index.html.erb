@@ -1,24 +1,30 @@
-<br><br><br><br><br><br><br>
-<h4>Create a new menu:</h4>
-<%= form_with(url: "/menus", method: "post",class: "AddMenu") do %>
-    <%= text_field_tag 'name',nil,placeholder:"Menu name",class:'menu_name' %>
-    <%= button_tag 'Create',type:'submit', class:'AddMenu-button'%>
-<% end %>
-
-<h1>All saved menus </h1>
-<ul>
-<% @menus.each do |menu| %>
-    <li> <%= menu.id %>. <%= menu.name %> -
-    <% if menu.default %>
-        <strong>Default</strong>
-    <% else %>
-        <%= form_with(url: "/menus/#{menu.id}", method: "put") do %>
-            <%= button_tag "Set as default",type:'submit', class:'setDefMenu-button'%>
+<main class="MenuPageMain" style="background-size: cover; height:100%;">
+  <div class="MenuPage">
+    <div class="CreateMenu">
+      <p style="margin: 10px;">Create a new Menu:</p>
+      <%= form_with(url: "/menus", method: "post",class: "AddMenu") do %>
+        <%= text_field_tag "name", nil, placeholder:"Menu name", class:"Form-input", style:"margin: 10px;" %>
+        <%= button_tag "Create",type:"submit", class:"Order-button", style:"margin: 10px;"%>
+      <% end %>
+    </div>
+    <div style="margin: 20px; text-align: center;">
+      <p style="margin: 10px; font-size: 36px">All saved menus </p>
+      <ul style="margin: 10px; font-size: 30px">
+        <% @menus.each do |menu| %>
+          <li> <%= menu.id %>. <%= menu.name %> -
+            <% if menu.default %>
+              <strong>Default</strong>
+            <% else %>
+              <%= form_with(url: "/menus/#{menu.id}", method: "put") do %>
+                <%= button_tag "Set as default",type:"submit", class:"setDefMenu-button"%>
+              <% end %>
+            <% end %>
+            <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
+              <%= button_tag "Delete menu",type:"submit", class:"DeleteMenu-button"%>
+            <% end %>
+          </li>
         <% end %>
-    <% end %>
-    <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
-        <%= button_tag 'Delete menu',type:'submit', class:'DeleteMenu-button'%>
-    <% end %>
-    </li>
-<% end %>
-</ul>
+      </ul>
+    </div>
+  </div>
+</main>

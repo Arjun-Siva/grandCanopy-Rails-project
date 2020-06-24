@@ -1,23 +1,30 @@
-<h1>Current clerks</h1>
-<ul>
-<% @clerks.each do |clerk| %>
-    <li>Mobile: <%= clerk.mobile %>   <%= button_to "Delete Account", "/users/#{clerk.id}",class: 'DeleteUser-button', method:"delete"%></li>
-    <li>First name: <%= clerk.first_name %>
-    <li>Email: <%= clerk.email %>
-<% end %>
-</ul>
-<hr>
-<h1>Create new clerk account</h1>
-<%= form_with(url: "/users", method: "post",class: "AddClerk") do %>
-    <label for='mobile'>Mobile number:</label>
-    <%= text_field_tag 'mobile',nil,placeholder:"Mobile",class:'mobile' %>
-    <label for='first_name'>First name:</label>
-    <%= text_field_tag 'first_name',nil,placeholder:"First name",class:'first_name' %>
-    <label for='email'>Email id:</label>
-    <%= email_field_tag 'email',nil,placeholder:"Email",class:'email' %>
-    <label for='password'>Password:</label>
-    <%= password_field_tag 'password',nil,placeholder:"Password", class:"Form-input" %>
-    <label for='password_confirmation'>Password confirmation:</label>
-    <%= password_field_tag 'password_confirmation',nil,placeholder:"Confirm password", class:"Form-input" %>
-    <%= button_tag 'Create',type:'submit', class:'AddMenu-button'%>
-<% end %>
+<main class="LoginPage">
+  <div class="LoginPage-form" style="max-width: 1000px; font-size: 26px">
+    <h1>Current clerks</h1>
+    <ul>
+      <% @clerks.each do |clerk| %>
+        <li>Mobile: <%= clerk.mobile %></li>
+        <li>First name: <%= clerk.first_name %></li>
+        <li>Email: <%= clerk.email %></li>
+        <%= button_to "Delete Account", "/users/#{clerk.id}",class: 'DeleteUser-button', method:"delete"%>
+      <% end %>
+    </ul>
+    <hr>
+    <h1 class="LoginPage-title">Create new clerk account</h1>
+    <div class="LoginPage-credentials">
+      <%= form_with(url: "/users", method: "post",class: "AddClerk") do %>
+        <label for='mobile' class="FormInput-label">Mobile number:</label>
+        <%= text_field_tag 'mobile',nil,placeholder:"Mobile",class:'mobile', class:"Form-input" %>
+        <label for='first_name' class="FormInput-label">First name:</label>
+        <%= text_field_tag 'first_name',nil,placeholder:"First name",class:'first_name', class:"Form-input" %>
+        <label for='email' class="FormInput-label">Email id:</label>
+        <%= email_field_tag 'email',nil,placeholder:"Email",class:'email', class:"Form-input", class:"Form-input" %>
+        <label for='password' class="FormInput-label">Password:</label>
+        <%= password_field_tag 'password',nil,placeholder:"Password", class:"Form-input" %>
+        <label for='password_confirmation' class="FormInput-label">Password confirmation:</label>
+        <%= password_field_tag 'password_confirmation',nil,placeholder:"Confirm password", class:"Form-input" %>
+        <%= button_tag 'Create',type:'submit', class:'Form-submit'%>
+      <% end %>
+    </div>
+  </div>
+</main>

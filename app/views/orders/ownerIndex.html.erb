@@ -1,20 +1,23 @@
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<h2>Fetch orders:</h2>
-<%= form_with(url: "/orders", method:"post",class: "salesDates") do %>
-  <label for="from_date">From:</label>
-  <%= date_field_tag 'from_date',nil,:required => true,class:'Sales-Date'%>
-  <label for="to_date">To:</label>
-  <%= date_field_tag 'to_date',nil,:required => true,class:'Sales-Date'%>
-  <%= button_tag 'Submit',type:'submit', class:'dateSubmit-buton'%>
-<% end %>
-<hr>
-<% @orders.each do |order| %>
-<div style='flex'>
-<p>Id: <%= order.id %>, </p>
-<p>Date: <%= order.date %>, </p>
-<p>User-id: <%= order.user_id %>, </p>
-<p>Status: <%= order.status %>, </p>
-<p> <%= order.address %>, </p>
-<%= button_to "View order", "/orders/#{order.id}", class: "CartRedirect",method:"get" %>
-</div>
-<%end%>
+<main class="OrdersPageMain" style="height: 100%; overflow: auto;">
+  <div class="OrdersPage">
+    <h2>Fetch orders:</h2>
+    <%= form_with(url: "/orders", method:"post",class: "salesDates") do %>
+      <label for="from_date">From:</label>
+      <%= date_field_tag 'from_date',nil,:required => true,class:'Sales-Date'%>
+      <label for="to_date">To:</label>
+      <%= date_field_tag 'to_date',nil,:required => true,class:'Sales-Date'%>
+      <%= button_tag 'Submit',type:'submit', class:'dateSubmit-buton'%>
+    <% end %>
+    <hr>
+    <% @orders.each do |order| %>
+      <div style='flex'>
+        <p>Id: <%= order.id %>, </p>
+        <p>Date: <%= order.date %>, </p>
+        <p>User-id: <%= order.user_id %>, </p>
+        <p>Status: <%= order.status %>, </p>
+        <p> <%= order.address %>, </p>
+        <%= button_to "View order", "/orders/#{order.id}", class: "CartRedirect",method:"get" %>
+      </div>
+    <%end%>
+  </div>
+</main>

@@ -15,6 +15,7 @@
     border: 1px solid #dadce0;
     border-radius: 8px;
     background-color: #ffffff;
+    height: max-content;
 }
 
 .LoginPage-title {
@@ -71,7 +72,31 @@
     color: #ffffff;
     background-color: #1a73e8;
     height: 35px;
-    padding: 2px 2px;
+    padding: 5px 5px;
     font-size: 16px;
-    width: 80px;
+}
+
+.User-detailLabel {
+    font-size: 20px;
+    color: #5f6368;
+    margin: 15px;
+}
+
+.User-detail {
+    font-size: 22px;
+    margin: 15px;
+    text-align: left;
+}
+
+.UserPage-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    margin: 30px;
+    color: #5f6368;
+}
+
+.UserPage-details {
+    margin: 30px;
+    text-align: center;
 }

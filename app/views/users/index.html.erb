@@ -1,8 +1,28 @@
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<h1>My info</h1>
-<p>First name: <%= @current_user.first_name %> </p> 
-<p>Last name: <%= @current_user.last_name %> </p>
-<p>Email: <%= @current_user.email %> </p>
-<p>Mobile: <%= @current_user.mobile %> </p>
-<p>Address: <%= @current_user.address %> </p>
-<%= button_to "Delete my Account", "/users/#{@current_user.id}",class: 'DeleteUser-button', method:"delete"%>
+<main class="LoginPage">
+  <div class="LoginPage-form">
+    <p class="UserPage-title">My info</p>
+    <div class="UserPage-details">
+      <div style="display: flex;">
+        <p class="User-detailLabel">First name:</p>
+        <p class="User-detail"><%= @current_user.first_name %></p>
+      </div>
+      <div style="display: flex;">
+        <p class="User-detailLabel">Last name:</p>
+        <p class="User-detail"><%= @current_user.last_name %></p>
+      </div>
+      <div style="display: flex;">
+        <p class="User-detailLabel">Email:</p>
+        <p class="User-detail"><%= @current_user.email %></p>
+      </div>
+      <div style="display: flex;">
+        <p class="User-detailLabel">Mobile:</p>
+        <p class="User-detail"><%= @current_user.mobile %></p>
+      </div>
+      <div style="display: flex;">
+        <p class="User-detailLabel">Address:</p>
+        <p class="User-detail"><%= @current_user.address %></p>
+      </div>
+      <%= button_to "Delete my Account", "/users/#{@current_user.id}",class: "Form-submit", method: "delete", style: "margin: 10px;" %>
+    </div>
+  </div>
+</main>

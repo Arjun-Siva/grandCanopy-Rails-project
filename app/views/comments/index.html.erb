@@ -1,6 +1,10 @@
-<% @comments.each do |comment| %>
-  <h1>Order_id :<%= comment.order_id %>, Rating: <%= comment.rating%></h1>
-  <p>Comment: <%=comment.comment%> </p>
-  <%= button_to "View order", "/orders/#{comment.order_id}", class: "CartRedirect",method:"get" %>
-  <hr>
-<% end %>
+<main class="OrdersPageMain" style="background: none; color: #000000">
+  <div class="OrdersPage" style="max-width: 700px; font-size: 22px;">
+    <% @comments.each do |comment| %>
+      <h1>Order_id :<%= comment.order_id %>, Rating: <%= comment.rating%></h1>
+      <p>Comment: <%=comment.comment%> </p>
+      <%= button_to "View order", "/orders/#{comment.order_id}", class: "Form-submit", method:"get" %>
+      <hr>
+    <% end %>
+  </div>
+</main>

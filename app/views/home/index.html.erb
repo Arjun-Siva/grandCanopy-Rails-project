@@ -1,7 +1,15 @@
 <main class="HomePageMain">
   <div class="HomePage-welcome">
-    <p class="HomePage-title">Order tasty FOOD</p>
-    <p class="HomePage-title">Delivered to your Doorstep</p>
+    <div class="item-1">
+      <p class="HomePage-title">Order tasty FOOD</p>
+      <p class="HomePage-title">Delivered to your Doorstep</p>
+    </div>
+    <div class="item-2">
+      <p class="HomePage-title">Hungry?</p>
+    </div>
+    <div class="item-3">
+      <p class="HomePage-title">Tired of cooking?</p>
+    </div>
     <div class="HomePage-navigate">
       <form method="get" action="/menu_items">
         <input class="HomePage-naivgateButton" value="Order Now" type="submit" />
@@ -12,9 +20,12 @@
     </div>
   </div>
   <div class="HomePage-container" id="offerHead">
-    <div class="HomePage-offers">
-      <p class="HomePage-offersTitle">Offers</p>
-      <div class="MenuPage-items" style="background-color: #ffffff; margin: 20px; border-radius: 4px;">
+    <div class="HomePage-offerHead">
+      <a href="javascript:void(0);" class="HomePage-offersTitle" id="of" onclick="viewoffer()">Offers</a>
+      <a href="javascript:void(0);" class="HomePage-offersTitle" id="bs" onclick="viewbestsellers()">Best Sellers</a>
+    </div>
+    <div class="HomePage-offers" id="offers">
+      <div class="Offers-container">
         <% @offers.each do |offer| %>
           <% item = MenuItem.find(offer.menu_item_id) %>
           <div class="MenuItem">
@@ -37,13 +48,8 @@
         <% end %>
       </div>
     </div>
-    <div class="HomePage-offers">
-      <p class="HomePage-offersTitle">Best sellers</p>
-<<<<<<< HEAD
-      <div class="MenuPage-items" style="background-color: #ffffff; margin: 20px; border-radius: 4px;">>
-=======
-      <div class="MenuPage-items"style="background-color: #ffffff; margin: 20px; border-radius: 4px;">
->>>>>>> 10ae68a56e1676c4f3da2065e90df888a978a154
+    <div class="HomePage-offers" id="bestsellers">
+      <div class="Offers-container">
         <% @top5.each do |item| %>
           <div class="MenuItem">
             <img src=<%= item.image %> class="MenuItem-image">
