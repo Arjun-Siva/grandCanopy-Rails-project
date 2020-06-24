@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>The Grand Canopy</title>
+    <link rel="icon" href="/assets/logo-small.png" type="image/gif" sizes="16x16">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -30,7 +31,7 @@
         <%= link_to order_items_path do %>
           <% image_tag "cart.svg", class: "Navbar-icon" %>
         <% end %>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <a href="javascript:void(0);" class="icon" onclick="hamburger()">
           <%= image_tag "hamburger.svg", class: "Navbar-icon", id: "hamburger" %>
         </a>
       </div>
@@ -49,7 +50,7 @@
     <%= yield %>
   </body>
   <script>
-    function myFunction() {
+    function hamburger() {
       var x = document.getElementById("navbar");
       if (x.className === "Navbar")
       {
@@ -58,6 +59,15 @@
       else {
         x.className = "Navbar";
       }
+    }
+    function viewoffer(){
+      document.getElementById("offers").style.display="block";
+      document.getElementById("bestsellers").style.display="none";
+      document.getElementById("bestsellers").style.display="border: 1px solid #dadce0;
+    }
+    function viewbestsellers(){
+      document.getElementById("bestsellers").style.display="block";
+      document.getElementById("offers").style.display="none";
     }
   </script>
 </html>
