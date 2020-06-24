@@ -1,3 +1,45 @@
-// Place all the styles related to the OrderItems controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.CartPageMain {
+    background-size: contain;
+    overflow: auto;
+    color: #ffffff;
+    background-image: url(https://jooinn.com/images/dark-pattern-4.jpg);
+}
+
+.CartPage {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 130px 0px;
+}
+
+.Cart-address {
+    margin: 10px;
+    padding: 5px 5px;
+    width: 90%;
+    font-size: 22px;
+    background-color: rgba($color: #ffffff, $alpha: 0.5);
+    border-radius: 8px;
+    outline: none;
+}
+
+.Cart-confirm {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 28px;
+    font-weight: 600;
+    padding: 5px 5px;
+    margin-top: 30px;
+}
+
+.Cart-confirm:hover {
+    background-color: rgba($color: #ffffff, $alpha: 0.5);
+    color: #351010;
+    transition: background-color 0.3s;
+}
+
+.CartForm {
+    background-color: rgba($color: #ffffff, $alpha: 0.1);
+    margin-bottom: 30px;
+    text-align: center;
+}

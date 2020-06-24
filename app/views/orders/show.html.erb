@@ -1,33 +1,56 @@
-<% subtotal = 0%>
-<p>User id: <%= Order.find(@order_items[0].order_id).user_id %></p>
-<table class="Table-cart">
-<tr>
-    <th>Name</th>
-    <th>Price per unit</th>
-    <th>Quantity</th>
-</tr>
-<% @order_items.each do |item| %>
-<tr> 
-<td><%= item.menu_item_name %></td>
-<td><%= item.menu_item_price %></td>
-<td><%= item.quantity %></td>
-</tr>
-<% subtotal=subtotal+ ((item.menu_item_price.to_i)*(item.quantity.to_i)) %>
-<% end %>
-</table>
-<h2>Total(inclusive of delivery charges and taxes):<%= 25+(subtotal*1.05) %></h2>
-<%= link_to "Go back to orders", orders_path %>
-
-<%if @show_comment %>
-<h1>We'd love to hear from you!</h1>
-<h2>Please rate your food</h2>
-<%= form_with(url: "/comments/#{@order_items[0].order_id}", method: 'post') do%>
-    <%= label_tag(:rating, "Rate your order") %>
-    <div class="slidecontainer">
-        <input type="range" min="1" max="5" value="2" class="slider" id="myRange" name="rating">
+<main class="OrdersPageMain" style="background-size: cover; height: 100%;">
+  <div class="OrdersPage" style="max-width: 700px; font-size: 22px;">
+    <% subtotal = 0%>
+    <p class="OrdersPage-title">User id: <%= Order.find(@order_items[0].order_id).user_id %></p>
+    <div style="display:flex;">
+      <table class="CartTable" style="border-radius: 2px; margin:20px">
+        <thead>
+          <tr style="background-color: rgba(00, 00, 00, 0.7);">
+            <th>Name</th>
+            <th>Rate</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_items.each do |item| %>
+            <tr style="border-bottom: 1px solid #ffffff;">
+              <td style="text-align: left;"><%= item.menu_item_name %></td>
+              <td><%= item.menu_item_price %></td>
+              <td><%= item.quantity %></td>
+            </tr>
+            <% subtotal=subtotal+ ((item.menu_item_price.to_i)*(item.quantity.to_i)) %>
+          <% end %>
+        </tbody>
+      </table>
+      <div style="text-align: center;">
+        <div style="display:flex; justify-content: space-between;">
+          <p class="Order-detail">Total: </p>
+          <p class="Order-detail"><%= 25+(subtotal*1.05) %></p>
+        </div>
+        <p style="font-size: 12px; margin: 0px 20px; padding-bottom: 20px;">(inclusive of delivery charges and taxes)</p>
+        <%= link_to "Go back to orders", orders_path, class: "Order-link" %>
+      </div>
     </div>
-    <%= label_tag(:comment, "Comment your food") %>
-    <%= text_area_tag(:comment,nil, size: '40x10') %>
-    <%= button_tag "Add", type:"submit", class: "commentAdd"%>
-<% end %>
-<% end %>
+    <%if @show_comment %>
+      <div>
+        <p class="Order-detail">We'd love to hear from you!</p>
+        <p class="Order-detail">Please rate your food</p>
+      </div>
+      <%= form_with(url: "/comments/#{@order_items[0].order_id}", method: 'post') do%>
+        <div style="display: flex;">
+          <%= label_tag(:rating, "Rate your order :", class: "Order-detail") %>
+          <div class="SlideContainer">
+            <input type="range" min="1" max="5" value="2" class="Slider" id="myRange" name="rating">
+          </div>
+        </div>
+        <div style="display: grid;">
+          <div style="display: flex;">
+            <%= label_tag(:comment, "Comment your food : ", class: "Order-detail") %>
+            <%= text_area_tag(:comment, nil, class: "Order-comment") %>
+          </div>
+          <%= button_tag "Add", type:"submit", class: "Order-button", style: "color: #ffffff; margin:40px " %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</main>

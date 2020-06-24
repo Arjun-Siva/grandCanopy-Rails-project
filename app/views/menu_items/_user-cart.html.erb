@@ -15,7 +15,7 @@
         <tr>
           <td style="text-align: left;"><%= cart_item.name %></td>
           <td><%= cart_item.price %></td>
-          <td class="CartTable-quality">
+          <td class="CartTable-quantity">
             <%= button_to "—", update_minusOne_path(cart_item.id),class:"QuantityButton", method:"put" %>
             <p style="margin-left: 5px;"><%= item["quantity"] %></p>
             <%= button_to "+", update_plusOne_path(cart_item.id),class:"QuantityButton", method:"put" %>
