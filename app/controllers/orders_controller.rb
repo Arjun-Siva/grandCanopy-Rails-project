@@ -51,9 +51,18 @@ class OrdersController < ApplicationController
 
   def show
     orderId = params[:id]
+    @current_user = current_user
     if (Order.find(orderId)).user_id == (@current_user.id).to_i or check_owner
       @order_items = OrderItem.where("order_id = ?", orderId)
-      @show_comment = (Comment.find_by(order_id: orderId) and check_customer) ? false : true
+      if Comment.find_by(order_id: orderId)
+        if @current_user.type_of_user == "Customer"
+          @show_comment = true
+        else
+          @show_comment = false
+        end
+      else
+        @show_comment = false
+      end
       render "show"
     else
       redirect_to orders_path
