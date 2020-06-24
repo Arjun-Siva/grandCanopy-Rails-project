@@ -15,4 +15,8 @@ class HomeController < ApplicationController
   def else
     render "missing"
   end
+
+  def about
+    render "about"
+  end
 end

@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   get "/signin" => "sessions#new", as: :new_session
   post "/signin" => "sessions#create", as: :session
   delete "/signout" => "sessions#destroy", as: :destroy_session
+  get "/about" => "home#about"
   get "/:else" => "home#else"
 end
