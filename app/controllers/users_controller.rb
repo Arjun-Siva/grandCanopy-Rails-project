@@ -36,7 +36,7 @@ class UsersController < ApplicationController
         password_confirmation: params[:password_confirmation],
         type_of_user: "Clerk",
       )
-      if new_user.save
+      if new_clerk.save
         redirect_to users_path
       else
         redirect_to new_user_path, alert: new_user.errors.full_messages.join(", ")
