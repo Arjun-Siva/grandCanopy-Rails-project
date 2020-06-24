@@ -15,7 +15,7 @@
         <tr>
           <td style="text-align: left;"><%= cart_item.name %></td>
           <td><%= cart_item.price %></td>
-          <td class="CartTable-quality">
+          <td class="CartTable-quantity">
             <%= button_to "—", update_minusOne_path(cart_item.id),class:"QuantityButton", method:"put" %>
             <p style="margin-left: 5px;"><%= item["quantity"] %></p>
             <%= button_to "+", update_plusOne_path(cart_item.id),class:"QuantityButton", method:"put" %>
@@ -32,15 +32,8 @@
   </tbody>
 </table>
 <div style="display: flex; align-items: center; justify-content: space-between;">
-<<<<<<< HEAD
   <p class="CartTotal">Subtotal: <%= subtotal %></p>
   <% if current_cart.length > 0 %>
     <%= button_to "Proceed to checkout", order_items_path, method: "get", class: "CartRedirect" %>
   <% end %>
-=======
-<p class="CartTotal">Subtotal: <%= subtotal %></p>
-<% if current_cart.length > 0 %>
-  <%= button_to "Proceed to checkout", order_items_path, class: "CartRedirect",method:"get" %>
-<% end %>
->>>>>>> 6715a027a9866ed98eb73b3726bb862a3f531164
 </div>

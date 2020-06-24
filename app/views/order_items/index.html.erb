@@ -1,37 +1,53 @@
-<% subtotal = 0%>
-<% if @current_cart.length > 0 %>
-    <table class="Table-cart">
-    <tr>
-        <th>Name</th>
-        <th>Price per unit</th>
-        <th>Quantity</th>
-    </tr>
-    <% @current_cart.each do |current_item| %>
-        <% item=MenuItem.find(current_item["id"].to_i) %>
-        <tr>
-            <td><%= item[:name] %></td>
-            <td><%= item[:price] %></td>
-            <td><%= current_item["quantity"].to_i %></td>
-        </tr>
-        <% subtotal=subtotal+ ((item[:price].to_i)*(current_item["quantity"].to_i)) %>
-    <% end %>
-    </table>
-    <% if @offline_bill%>
-        <h2>Total(inclusive of 5% taxes):<%= subtotal*1.05 %></h2>
-        <%= form_with(url: "/order_items",method:"POST",class: "ConfirmOrder") do %>
-            <%= button_tag 'Confirm order',type:'submit',class:'ConfirmOrder-button'%>
+<main class="MenuPageMain" style="background-size: cover; height: 100%;">
+  <div class="CartPage" style="max-width: 700px;">
+    <p class="OrdersPage-title">Cart</p>
+    <% subtotal = 0%>
+    <% if @current_cart.length > 0 %>
+      <table class="CartTable" style="border-radius: 6px; margin:0 auto; max-width:600px; min-width:500px;">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price per unit</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @current_cart.each do |current_item| %>
+            <% item=MenuItem.find(current_item["id"].to_i) %>
+            <tr>
+              <td style="text-align: left;"><%= item[:name] %></td>
+              <td><%= item[:price] %></td>
+              <td><%= current_item["quantity"].to_i %></td>
+            </tr>
+            <% subtotal=subtotal+ ((item[:price].to_i)*(current_item["quantity"].to_i)) %>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to "Edit order", menu_items_path, class: "Order-link", style: "float:right" %>
+      <% if @offline_bill%>
+        <p class="Order-detail">Total(inclusive of 5% taxes) :<%= subtotal*1.05 %></p>
+        <%= form_with(url: "/order_items",method:"POST",class: "CartForm") do %>
+          <%= button_tag "Confirm order",type:"submit",class:"Cart-confirm"%>
         <% end %>
+      <% else %>
+        <p class="Order-detail">Delivery Charge :  25</p>
+        <p class="Order-detail">Total(inclusive of 5% taxes) : <%= (subtotal*1.05)+25 %></p>
+        <%= form_with(url: "/order_items",method:"POST",class: "CartForm") do %>
+          <div style="display: flex;">
+            <p class="Order-detail">Address :  </p>
+            <div>
+              <%= text_field_tag "address",nil,value:@current_user.address, class: "Cart-address"%>
+              <p style="font-size: 16px; margin: 10px;">(Change only if Delivery Address is not your default address)</p>
+            </div>
+          </div>
+          <%= button_tag "Confirm order",type:"submit",class:"Cart-confirm"%>
+        <% end %>
+      <% end %>
     <% else %>
-        <p>Delivery-charge:25</p>
-        <h2>Total(inclusive of 5% taxes):<%= (subtotal*1.05)+25 %></h2>
-        <%= form_with(url: "/order_items",method:"POST",class: "ConfirmOrder") do %>
-            <%= text_field_tag 'address',nil,placeholder:'Address',value:@current_user.address, :size => 50, class:'Order-address'%>
-            <%= button_tag 'Confirm order',type:'submit',class:'ConfirmOrder-button'%>
-        <% end %>
-        <p>(Change the address for delivery if you don't want to receive in your default saved address)</p>
+      <div style="display: flex; align-items: center;">
+        <p style="font-size: 40px; margin: 10px;">Oops! Your cart is empty...</p>
+        <%= link_to "Add Items", menu_items_path, class: "Order-link", style: "font-size: 32px" %>
+      </div>
     <% end %>
-<% else %>
-    <h2>Oops! Your cart is empty </h2>
-<% end %>    
-<%= link_to "Edit order", menu_items_path %>
-<hr>
+  </div>
+</main>

@@ -11,7 +11,7 @@
 
 .MenuPage-menu {
     display: block;
-    max-width: 1600px;
+    max-width: 1400px;
     text-align: center;
 }
 
@@ -32,7 +32,7 @@
     border-radius: 12px;
     background-color: rgba($color: #dadce0, $alpha: 0.5);
     text-align: left;
-    transition: 0.5s;
+    transition: 0.3s;
     overflow: hidden;
 }
 
@@ -65,14 +65,14 @@
     width: 100%;
     height: 300px;
     border-radius: 12px 12px 0px 0px;
-    transition: all 0.5s;
+    transition: all 0.3s;
 }
 
 .MenuItem-content {
     width: 100%;
     height: 100px;
     font-size: 20px;
-    transition: all 0.5s;
+    transition: all 0.3s;
 }
 
 .MenuItem-name {
@@ -112,6 +112,21 @@
     margin-left: 5px;
     padding: 3px;
     width: 70px;
+    outline: none;
+}
+
+.MenuItem-quantityBox::-webkit-outer-spin-button,
+.MenuItem-quantityBox::-webkit-inner-spin-button {
+    background: #ffffff;
+    border: 1px solid #dadce0;
+    opacity: 0.1;
+}
+
+.MenuItem-quantity:hover {
+    .MenuItem-quantityBox::-webkit-outer-spin-button,
+    .MenuItem-quantityBox::-webkit-inner-spin-button {
+        opacity: 0.5;
+    }
 }
 
 .MenuItem-add {
