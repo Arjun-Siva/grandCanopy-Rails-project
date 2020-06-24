@@ -10,6 +10,30 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    function hamburger() {
+      var x = document.getElementById("navbar");
+      if (x.className === "Navbar")
+      {
+        x.className += " responsive";
+      }
+      else {
+        x.className = "Navbar";
+      }
+    }
+    function viewoffer(){
+      document.getElementById("offers").style.display="block";
+      document.getElementById("bestsellers").style.display="none";
+      document.getElementById("bs").style.background="#dadce0";
+      document.getElementById("of").style.background="#ffffff";
+    }
+    function viewbestsellers(){
+      document.getElementById("bestsellers").style.display="block";
+      document.getElementById("offers").style.display="none";
+      document.getElementById("of").style.background="#dadce0";
+      document.getElementById("bs").style.background="#ffffff";
+    }
+  </script>
   <body>
     <div class="Navbar" id="navbar">
       <%= link_to "/" do %>
@@ -49,32 +73,6 @@
       </div>
     </div>
     <%= yield %>
-    <div class="foot">
-      <p>yelooooo</p>
-    </div>
+    <%= render "layouts/footer" %>
   </body>
-  <script>
-    function hamburger() {
-      var x = document.getElementById("navbar");
-      if (x.className === "Navbar")
-      {
-        x.className += " responsive";
-      }
-      else {
-        x.className = "Navbar";
-      }
-    }
-    function viewoffer(){
-      document.getElementById("offers").style.display="block";
-      document.getElementById("bestsellers").style.display="none";
-      document.getElementById("bs").style.background="#dadce0";
-      document.getElementById("of").style.background="#ffffff";
-    }
-    function viewbestsellers(){
-      document.getElementById("bestsellers").style.display="block";
-      document.getElementById("offers").style.display="none";
-      document.getElementById("of").style.background="#dadce0";
-      document.getElementById("bs").style.background="#ffffff";
-    }
-  </script>
 </html>

@@ -226,11 +226,49 @@ body {
 }
 
 .Footer {
+    display: flex;
     color: #ffffff;
     width: 100%;
-    height: 40px;
+    height: 60px;
     text-align: center;
-    font-size: 32px;
+    font-size: 18px;
     align-items: center;
+    justify-content: space-between;
     background-color: rgba($color: #000000, $alpha: 0.7);
+}
+
+.FooterCR {
+    font-family: 'Bree serif';
+    margin: 20px;
+}
+
+.Footer-logo {
+    height: 60px;
+}
+
+.Footer-link {
+    font-size: 20px;
+    text-decoration: none;
+    margin: 10px;
+    color: #dcac24;
+}
+
+.Footer-link:hover {
+    color: #f2f2f2;
+}
+
+::-webkit-scrollbar {
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }

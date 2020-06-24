@@ -53,7 +53,7 @@
       </thead>
       <tbody>
         <% @offlineData.keys.each do |key| %>
-          <% data.push([@offlineData[key]['name'].to_s+"("+key.to_s+")",@onlineData[key]['subtotal']])%>
+          <% data.push([@offlineData[key]['name'].to_s+"("+key.to_s+")",@offlineData[key]['subtotal']])%>
           <tr>
             <td><%= key %></td>
             <td><%= @offlineData[key]['name'] %></td>
