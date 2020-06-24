@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    orderId = params[:id]
+    orderId = params[:id].to_i
     @current_user = current_user
     if (Order.find(orderId)).user_id == (@current_user.id).to_i or check_owner
       @order_items = OrderItem.where("order_id = ?", orderId)

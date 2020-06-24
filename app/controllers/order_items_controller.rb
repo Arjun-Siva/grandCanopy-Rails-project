@@ -10,31 +10,33 @@ class OrderItemsController < ApplicationController
       @offlineData = {}
       onlineOrderIds = Order.where("date >= ? and date <= ?", from, to).where("status= ? ", "Delivered").select(:id)
       offlineOrderIds = Order.where("date >= ? and date <= ?", from, to).where("status= ? ", "Offline bill").select(:id)
-      onlineOrderIds.each do |id|
-        orderItems = OrderItem.where("order_id = ?", id.id)
-        orderItems.each do |item|
-          if @onlineData[item.menu_item_id] == nil
-            @onlineData[item.menu_item_id] = { "name" => item.menu_item_name,
-                                               "quantity" => item.quantity,
-                                               "subtotal" => item.quantity * item.menu_item_price }
-          else
-            @onlineData[item.menu_item_id]["name"] = item.menu_item_name
-            @onlineData[item.menu_item_id]["quantity"] += item.quantity
-            @onlineData[item.menu_item_id]["subtotal"] += (item.quantity * item.menu_item_price)
+      if !onlineOrderIds.empty?
+        onlineOrderIds.each do |id|
+          orderItems = OrderItem.where("order_id = ?", id.id)
+          orderItems.each do |item|
+            if @onlineData[item.menu_item_id] == nil
+              @onlineData[item.menu_item_id] = { "name" => item.menu_item_name,
+                                                 "quantity" => item.quantity,
+                                                 "subtotal" => item.quantity * item.menu_item_price }
+            else
+              @onlineData[item.menu_item_id]["quantity"] += item.quantity
+              @onlineData[item.menu_item_id]["subtotal"] += (item.quantity * item.menu_item_price)
+            end
           end
         end
       end
-      offlineOrderIds.each do |id|
-        orderItems = OrderItem.where("order_id = ?", id.id)
-        orderItems.each do |item|
-          if @offlineData[item.menu_item_id] == nil
-            @offlineData[item.menu_item_id] = { "name" => item.menu_item_name,
-                                                "quantity" => item.quantity,
-                                                "subtotal" => item.quantity * item.menu_item_price }
-          else
-            @offlineData[item.menu_item_id]["name"] = item.menu_item_name
-            @offlineData[item.menu_item_id]["quantity"] += item.quantity
-            @offlineData[item.menu_item_id]["subtotal"] += (item.quantity * item.menu_item_price)
+      if !offlineOrderIds.empty?
+        offlineOrderIds.each do |id|
+          orderItems = OrderItem.where("order_id = ?", id.id)
+          orderItems.each do |item|
+            if @offlineData[item.menu_item_id] == nil
+              @offlineData[item.menu_item_id] = { "name" => item.menu_item_name,
+                                                  "quantity" => item.quantity,
+                                                  "subtotal" => item.quantity * item.menu_item_price }
+            else
+              @offlineData[item.menu_item_id]["quantity"] += item.quantity
+              @offlineData[item.menu_item_id]["subtotal"] += (item.quantity * item.menu_item_price)
+            end
           end
         end
       end
