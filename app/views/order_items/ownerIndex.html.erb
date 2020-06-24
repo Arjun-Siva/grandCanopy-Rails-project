@@ -1,0 +1,63 @@
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<h2>Generate sales summary:</h2>
+<%= form_with(url: "/order_items", method:"post",class: "salesDates") do %>
+  <label for="from_date">From:</label>
+  <%= date_field_tag 'from_date',nil,:required => true,class:'Sales-Date'%>
+  <label for="to_date">To:</label>
+  <%= date_field_tag 'to_date',nil,:required => true,class:'Sales-Date'%>
+  <%= button_tag 'Submit',type:'submit', class:'dateSubmit-buton'%>
+<% end %>
+<hr>
+<h4>Total no. of online orders: <%= @onlineOrders %></h4>
+<h4>Total no. of offline orders: <%= @offlineOrders %></h4>
+<h3>Online orders summary</h3>
+<% onlineTotal=0 %>
+<% data=[] %>
+<table>
+  <tr>
+    <th>Menu Item Id</th>
+    <th>Menu Item name</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+    <tr>
+      <% @onlineData.keys.each do |key| %>
+        <% data.push([@onlineData[key]['name'].to_s+"("+key.to_s+")",@onlineData[key]['subtotal']])%>
+        <tr>
+          <td><%= key %></td>
+          <td><%= @onlineData[key]['name'] %></td>
+          <td><%= @onlineData[key]['quantity'] %></td>
+          <td><%= @onlineData[key]['subtotal'] %></td>
+        </tr>
+        <% onlineTotal += @onlineData[key]['subtotal']%>
+      <% end %>
+    </table>
+    <h2>Total amount through online sales(inclusive of taxes and delivery charges):<%= onlineTotal*1.05+(@onlineOrders*25) %></h2>
+    <h2>Contribution to the total revenue by each menu item in online sales</h2>
+    <%= pie_chart data, donut: true, messages: {empty: "No data"}  %>
+    <h3>Offline orders summary</h3>
+    <% offlineTotal=0 %>
+    <% data=[] %>
+    <table>
+      <tr>
+        <th>Menu Item Id</th>
+        <th>Menu Item name</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+        <tr>
+          <% @offlineData.keys.each do |key| %>
+            <% data.push([@offlineData[key]['name'].to_s+"("+key.to_s+")",@onlineData[key]['subtotal']])%>
+            <tr>
+              <td><%= key %></td>
+              <td><%= @offlineData[key]['name'] %></td>
+              <td><%= @offlineData[key]['quantity'] %></td>
+              <td><%= @offlineData[key]['subtotal'] %></td>
+            </tr>
+            <% offlineTotal += @offlineData[key]['subtotal']%>
+          <% end %>
+        </table>
+        <h2>Total amount through offline sales(inclusive of taxes):<%= onlineTotal*1.05 %></h2>
+        <h2>Contribution to the total revenue by each menu item in offline sales</h2>
+        <%= pie_chart data, donut: true, messages: {empty: "No data"}  %>
+        <h1>Orders per day</h1>
+        <%= line_chart Order.group_by_day(:created_at).count, xmin: (Date.parse session[:from_date].dup.to_s).to_s, xmax: (Date.parse session[:to_date].dup.to_s).to_s %>
+
