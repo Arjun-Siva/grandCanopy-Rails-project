@@ -1,24 +1,16 @@
-# README
+Visit http://grandcanopy.herokuapp.com/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+-Full Stack website made with Ruby on Rails
+-Javascript and HTML/CSS for frontend
+-Postgres for database storage
+-Admin, Staff and Customer logins for administration, billing and ordering respectively
+    -Admin can add,update and delete menus
+    -Admin can generate sales reports and summaries
+    -Admin can create and delete staff accounts
+    
+    -Staff can accept and reject orders
+    -Staff can bill offline orders
+    
+    -Customers can order and cancel food
+    -Customers can comment and rate food
+-Deployed in Heroku
